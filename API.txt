@@ -4,6 +4,10 @@ TWILIO:
 gbrantle@purdue.edu
 Birdisthew0rd!
 
+TWILIO NUMBER:
+(317) 548-6514
+13175486514
+
 
 ------ GAME OBJECT ------
 
@@ -37,6 +41,7 @@ Player[0].name: their Name
 Player[0].side: their alleigence. Set this all equal to 0 to start. 1 are SPIES!
 Player[0].teamLeader: 0/1, set all to 0 to start, 1 is team leader.
 Player[0].mission: 0/1, 1 is going on the mission
+Player[0].phone: PHONE NUMBER of the player
 
 ---------
 
@@ -141,7 +146,7 @@ JOIN:
 
 POST /:id/join
 -> json.playerList
-- App will have text boxes to input names of players. Then a JOIN button.
+- App will have text boxes to input names ( AND PHONE NUMBERS) of players. Then a JOIN button.
 -- clicking join button goes to /:id/join, t
 
 ALLIGENCE PHASE
@@ -149,6 +154,9 @@ GET /:id/getPlayers
 make a 2 part varification ("are you player.name? Yes? Here is your side")
 Tell spies what other spies there are. (/:id/getSpies)
 After the Player list is completely traveld through, go to Mission Control
+OR....
+SEND EACH PLAYER A TEXT OF THEIR ALLEGIENCE
+
 
 HTML -MISSION CHOICE-
 -Phone will have a team Leader at the top of the screen GET /:id/getLeader
