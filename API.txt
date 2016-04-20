@@ -9,55 +9,34 @@ https://viva-la-resistance.mybluemix.net/ IS THE WEBSITE SCRUB
 ------ GAME OBJECT ------
 
 roomnum: has the # of the room (Starts at 0)
-
 Players: array of names
-
 playersNum: amound of players
-
 numberOfSpies: amount of spies among them
 
 
-
 spyWins: has the # of rounds the spys have Won
-
 resWins: has the # of rounds the Resistance have Won
-
 voteFails: counts the amount of times a vote has not passed in a row
-
 chosen: amount of people going on the mission
-
 chosenMax: max amount of people going on the mission, ARRAY
-
 Leaders: array of player objects in order of who is team leader
-
 Mission: list of people on the mission
 
 
-
 pot: will hold the pass or success of a mission
-
 round: what round it is (1-5)
-
 ------
 
 -------Player Objects ------	
-
 The player object is stored in a list called Players
-
 each Game has a Players list.
-
 It is up to client to make the Player Objects correctly to send them over.
-
 Attributes I will need!
 
 
-
 Player[0].name: their Name
-
 Player[0].side: their alleigence. Set this all equal to 0 to start. 1 are SPIES!
-
 Player[0].teamLeader: 0/1, set all to 0 to start, 1 is team leader.
-
 Player[0].mission: 0/1, 1 is going on the mission
 
 ---------
@@ -65,294 +44,154 @@ Player[0].mission: 0/1, 1 is going on the mission
 ## /host
 
 Creates a game, saves it as long as server runs
-
 Gives Game room a code, starts at 0, increases by 1 by each game.
-
 ## /:id/getHost
-
 Returns all relevant information for host to parse
 
-
-
 ## /join
-
 NEEDS: json.room (room number), json.playersList (list of people playing)
-
 Adds players to the Game
-
 MAKES PLAYERS SPIES (1)
-
 MAKES LEADER LIST
-
 Makes first Leader!
 
-
-
 --GETTING PLAYERS
-
 ## /:id/getPlayers
-
 returns list of players!
-
 ## /:id/getSpies
-
 returns list of Spies
 
-
-
 --GETTING ROUND WINS
-
 ## /:id/getwins
-
 :id is the number of the game room
-
 returns SPYWINS RESWINS
-
 ## /:id/getSpyWins
-
 returns just Spywins
-
 ## /:id/getResWins
-
 returns just ResWins
 
-
-
 ## /:id/spyWin OR /:id/resWin
-
 Increases spyWin/resWin in game ID
-
 Updates round number
-
 HAS WIN CONDITION, sends "_____ WINS GAME"
 
-
-
 ## /:id/DoubleJ
-
 returns 1 if you need 2 fails for spy victory
-
 0 if other wise
 
-
-
 ----MISSION PREGAME-------
-
 ## /:id/select
-
 NEEDS: json of Player object. json.name = player name
-
 selects that player as going on the mission.
-
 ALSO, if person is already selected, unselects them! "_____ has been Chosen/Unchosen"
 
-
-
 ## /:id/whoMission
-
 Returns list of Player objects, and who is on the mission.
-
 ## /:id/totalSelected
-
 returns [num of people selected]/[max amount of people selected]
 
-
-
 -- Managing and Getting Mission VOTES
-
 ## /:id/getVote
-
 returns the amount of failed votes in a row
-
 ##  /:id/vote
-
 This receives input from user, 1 if vote to go on mission passes, 0 if not
-
 NEEDS json.vote, input = 1/0
-
 manages vote fails
-
 IF VOTE FAILS >= 5, sends SPYS WIN GAME
-
 IF Vote Fails < 5, Sends VOTE FAILS
-
 if Vote Passes, Sends VOTE PASSES
 
-
-
 ----LEADER MANAGMENT -----
-
 ### /:id/getLeaderList
-
 returns a List of Players in Leader ORDER!
-
 ### /:id/nextLeader
-
 Moves leader down the line!
-
 ### /:id/getLeader
-
 Returns a Player object 
 
 ----------
 
-
-
 **** Array and Object Notes ****
-
 legal:
-
 games[roomNumber].Players[5] = '3';
-
-
-
-
-
-
-
-
 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 Game Break Down!
 
-
-
 HOST:
-
 ::The Host is the display, for use on TV
 
-
-
 GETS /host
-
 - Gets host room
 
 GETS /:id/getHost, (keeps calling this to update)
-
 - returns all relevant information that needs to be displayed
-
 BONUS: GET /:id/whoMission (who is on the Mission)
-
 		GET /:id/getLeaderList (list of Leader seccesion in order)
 
 
-
 WIN CONDITION:
-
 		if there is a win condition here, display a victory screen
-
 		Display Spies? (/:id/getSpies)
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 JOIN:
-
 ::This is the one phone that links up with the host, gives server information
 
-
-
 POST /:id/join
-
 -> json.playerList
-
 - App will have text boxes to input names of players. Then a JOIN button.
-
 -- clicking join button goes to /:id/join, t
 
-
-
 ALLIGENCE PHASE
-
 GET /:id/getPlayers
-
 make a 2 part varification ("are you player.name? Yes? Here is your side")
-
 Tell spies what other spies there are. (/:id/getSpies)
-
 After the Player list is completely traveld through, go to Mission Control
 
-
-
 HTML -MISSION CHOICE-
-
 -Phone will have a team Leader at the top of the screen GET /:id/getLeader
-
 -x/y of how many people to select for each mission (/:id/totalSelected)
-
 -> Each selection calls  POST /:id/select (json.name)
-
 - /:id/whoMission is everyone selected on mission, call this when ever you select a new person
-
 -> Once max amount has been reached, then you are allowed to click 'SUBMIT'
 
-
-
 SUBMIT
-
 New Screen that does a count down from 5, People do a physical Vote
-
 After count down, give screen (PASS OR FAIL [Need majority up to pass])
 
-
-
 POST /:id/vote
-
 -> json.vote = 1 if passed, 0 if failed
-
 (MAY SEND 'SPIES WIN GAME\n' IF voteFails >= 5, catch this!)
 
 = 'Vote Fails!\n' GET /:id/nextLeader, redirect back to MISSION CHOICE
-
 = 'Vote Passes!\n' GO TO MISSION CONTROL
-
-
-
 MISSION CONTROL
-
 GET /:id/whoMission for everyone on mission
-
 GET /:id/DoubleJ, returns 1 if you need 2 fails
-
 Go through mission list,
-
 2 part system. (Are you player.name? One button (yes) -> takes you to vote screen)
-
  -> if player.side = 1, give them pass/fail (spy)
-
  -> if player.side = 0, give them pass (resistance)
-
 If a player puts a fail, increase pot by 1;
-
 if Pot == 1 (or 2 when DoubleJ returns 1), spy win or res win
 
 
-
 SPY WIN
-
 call /:id/spyWin
-
 - WIN CONDITION: 'Spies WIN GAME\n' go to end screen.
-
 or 'Spies Win Round x\n'
 
 -> call /:id/nextLeader, go back to MISSION CHOICE
 
-
-
 RES WIN
-
 call /:id/spyWin
-
 - WIN CONDITION: 'Resistance WIN GAME\n' go to end screen.
-
 or 'Resistance Win Round x\n'
 
 -> call /:id/nextLeader, go back to MISSION CHOICE
-
- 
-
-
 
 
 

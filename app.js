@@ -24,10 +24,8 @@ var appEnv = cfenv.getAppEnv();
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
 
-
-	// print a message when the server starts listening
+// print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
-
 });
 
 //Game room Number
@@ -222,7 +220,7 @@ app.get('/:id/spyWin', function (req, res) {
 
 		var wins = games[roomId].spyWins;
 		if (wins >= 3) {
-			res.send('SPIES WINS GAME\n');			
+			res.send('Spies WINS GAME\n');			
 		}
 		res.send('Spies Win Round ' + games[roomId].round + '\n');
 		games[roomId].round++;
@@ -369,4 +367,18 @@ app.get('/:id/getLeader', function(req, res) {
 	var id = req.params.id;
 	res.send(games[id].Players[games[id].Leaders[0]]);
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
