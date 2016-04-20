@@ -1,9 +1,8 @@
 THIS WILL GO OVER ALL THE STUPID STUFF THAT YOU CAN DO WITH THE API BY CALLING FUNCTIONS
 
-
-
-https://viva-la-resistance.mybluemix.net/ IS THE WEBSITE SCRUB
-
+TWILIO:
+gbrantle@purdue.edu
+Birdisthew0rd!
 
 
 ------ GAME OBJECT ------
