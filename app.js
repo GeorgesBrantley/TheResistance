@@ -40,13 +40,13 @@ config['user-provided'].forEach(function(service) {
 });
 app.get('/txt', function (req, res) {
    var client = new twilio.RestClient(twilioSid, twilioToken);
-  	var tonum ='13174323028'
-  	var fromnum = '13175486514'
+  	var tonum ='13174323028';
+  	var fromnum = '13175486514';
   	var message = 'dfsdfsds';
   client.sendMessage(
      {
-         to: ',
-         from: '', 
+         to: tonum,
+         from: fromnum, 
          body: message
       }, 
       function(err, message) {
