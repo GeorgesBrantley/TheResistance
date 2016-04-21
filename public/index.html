@@ -17,8 +17,13 @@
         <td>
             <h1>Welcome to Resistance</h1>
             <div name="buttons">
-            	<button type="button" id="start" action="host.html">Start a game</button>
-   				
+            	<button type="button" id="start" onclick="switchpage()">Start a game</button>
+   					<script language="javascript" type="text/javascript">
+						function switchpage() 
+						{
+    						req.body.location.href = "host.html";
+						}
+					</script>
             	<button type="button" id="join">Join a game</button>
             <div>
     </table>
