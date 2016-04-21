@@ -7,7 +7,7 @@ window.onload = function getRoom() {
 
 	var v = url.concat("/host");
 	console.log(v);
-	$.get( v, function( data ) {
+	$.get( "/host", function( data ) {
 	console.log( "Data Loaded: " + data );
 	document.getElementById("RoomNum").innerHTML = data;
 	});
