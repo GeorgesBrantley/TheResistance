@@ -30,7 +30,7 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 
 
 //TWILIO
-var config = JSON.parse(process.env.VCAP_SERVICES);
+var config = JSON.parse(process.env.VCAP_SERVICES || "{}");
 var twilioSid, twilioToken;
 config['user-provided'].forEach(function(service) {
 		if (service.name === 'Twilio-pn') {
@@ -39,15 +39,22 @@ config['user-provided'].forEach(function(service) {
 		}
 });
 app.get('/txt', function (req, res) {
-		var sender = new twilio.RestClient(twilioSid, twilioToken);
-		sender.sendMessage({
-			to:'13174323028',
-			from:'13175486514',
-			body:'TEST'
-		}, function(err, message) {
-			res.send('SENT: ' + message.sid);
-		});
-		
+   var client = new twilio.RestClient(twilioSid, twilioToken);
+   client.sendMessage(
+     {
+         to: '13174323028',
+         from: '13175486514', 
+         body: 'HELLLO'
+      }, 
+      function(err, message) {
+         if (err) {
+            console.error("Problemrr+," +message);
+            res.send("Errorrr" +"," +message);
+         } else {
+            res.send("yay?");
+         }
+      }
+   );
 });
 
 //END TWILIO
