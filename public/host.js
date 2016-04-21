@@ -2,14 +2,17 @@
 /*eslint-env browser, jquery*/
 console.log("running js");
 var url = "resistancegame.mybluemix.net";
+var roomNum;
 
+//get room number
 window.onload = function getRoom() {
 
 	var v = url.concat("/host");
 	console.log(v);
 	$.get( "/host", function( data ) {
-	console.log( "Data Loaded: " + data );
 	document.getElementById("RoomNum").innerHTML = data;
+	roomNum = data;
 	});
-	//document.getElementById("RoomNum").innerHTML = a;
 };
+
+//get initial game info

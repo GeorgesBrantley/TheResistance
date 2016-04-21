@@ -16,13 +16,14 @@
     
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-    <script src="host.js"></script>
+    <script src="join.js"></script>
 
 
   </head>
 
    <body>
 
+	<h1> Enter Players!</h1>
     <table>
 
       <tr>
@@ -32,9 +33,16 @@
           <img class = "newappIcon" src="images/Spy1.png">
 
         <td>
-
-           <p id="RoomNum"></p>
+			<p>Player Name</p>
+		</td>
+		<td>
+			<p>Phone #</p>
+		</td>
+	 </tr>
+		
 
     </table>
+    
+    <button id="submit" onclick="sendPlayerInfo()">Start Game</button>
   </body>
 </html>

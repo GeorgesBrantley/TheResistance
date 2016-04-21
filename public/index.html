@@ -10,7 +10,10 @@
     
     <script language="javascript" type="text/javascript">	
 		/*eslint-env browser */
-		function switchpage() {
+		function switchpageHost() {
+    		window.location.href = "host.html";
+    	}
+		function switchpageJoin() {
     		window.location.href = "host.html";
     	}
     </script>
@@ -24,8 +27,8 @@
         <td>
             <h1>Welcome to Resistance</h1>
             <div name="buttons">
-            	<button type="button" id="start" onclick="switchpage()">Start a game</button>
-            	<button type="button" id="join">Join a game</button>
+            	<button type="button" id="start" onclick="switchpageHost()">Start a game</button>
+            	<button type="button" id="join" onclick="switchpageJoin()">Join a game</button>
             <div>
     </table>
   </body>
