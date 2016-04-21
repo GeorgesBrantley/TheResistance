@@ -7,27 +7,57 @@
 // This application uses express as its web server
 // for more info, see: http://expressjs.com
 
+/*globals cfg */
 var express = require('express');
-
 // cfenv provides access to your Cloud Foundry environment
 // for more info, see: https://www.npmjs.com/package/cfenv
 var cfenv = require('cfenv');
 // create a new express server
 var app = express();
 
+//TWILIO
+var twilio = require('twilio');
+
 // serve the files out of ./public as our main files
 app.use(express.static(__dirname + '/public'));
-
 // get the app environment from Cloud Foundry
 var appEnv = cfenv.getAppEnv();
-
 // start server on the specified port and binding host
 app.listen(appEnv.port, '0.0.0.0', function() {
-
 // print a message when the server starts listening
   console.log("server starting on " + appEnv.url);
 });
 
+
+//TWILIO
+var config = JSON.parse(process.env.VCAP_SERVICES || "{}");
+var twilioSid, twilioToken;
+config['user-provided'].forEach(function(service) {
+		if (service.name === 'Twilio-pn') {
+			twilioSid = service.credentials.accountSID;
+			twilioToken = service.credentials.authToken;
+		}
+});
+app.get('/txt', function (req, res) {
+   var client = new twilio.RestClient(twilioSid, twilioToken);
+   client.sendMessage(
+     {
+         to: '13174323028',
+         from: '13175486514', 
+         body: 'HELLLO'
+      }, 
+      function(err, message) {
+         if (err) {
+            console.error("Problemrr+," +message);
+            res.send("Errorrr" +"," +message);
+         } else {
+            res.send("yay?");
+         }
+      }
+   );
+});
+
+//END TWILIO
 //Game room Number
 var gameRoom = 0;
 var games = [];
