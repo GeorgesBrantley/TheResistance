@@ -1,10 +1,12 @@
 /*eslint-env browser */
-app.console.log("running js");
-var room = getRoom();
+window.console.lo
+
 
 function getRoom() {
+	
+	
 	var a = "Room Number: djafklj";
-	app.console.log("getRoom");
-	window.getElementById("RoomNum").innerHTML = a;
+	console.log("getRoom");
+	document.getElementById("RoomNum").innerHTML = a;
 	return a;
 }
