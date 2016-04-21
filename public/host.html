@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+
 <html>
   <head>
 
@@ -14,14 +15,8 @@
     <link rel="stylesheet" href="stylesheets/style.css">
     
     <script src="host.js"></script>
-    
-    <script language="javascript" type="text/javascript" >
-  		/*eslint-env browser, jquery*/
-  		$(document).ready(function() {
-  			$("p").addClass("animated bounce");
-  		});
-  	</script>
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
   </head>
 
@@ -37,7 +32,16 @@
 
         <td>
 
-           <p id="RoomNum">dude</p>
+           <p id="RoomNum"></p>
+           
+           
+<script language="javascript" type="text/javascript" >
+  		/*eslint-env browser, jquery*/
+  		jQuery(document).ready(function() {
+  		    console.log("in Ready function");
+  			jQuery("#RoomNum").addClass("animated fadeout");
+  		});
+</script>
 
     </table>
 
