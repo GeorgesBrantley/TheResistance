@@ -7,6 +7,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/style.css">
+    
+    <script language="javascript" type="text/javascript">
+		function switchpage() {
+    		window.location.href = "host.html";
+    	}
+    </script>
   </head>
 
   <body>
@@ -17,14 +23,7 @@
         <td>
             <h1>Welcome to Resistance</h1>
             <div name="buttons">
-            	<button type="button" id="start" onclick="/*eslint-env browser */
-            	switchpage()">Start a game</button>
-   					<script language="javascript" type="text/javascript">
-						function switchpage() 
-						{
-    						window.location.href = "host.html";
-						}
-					</script>
+            	<button type="button" id="start" onclick="switchpage()">Start a game</button>
             	<button type="button" id="join">Join a game</button>
             <div>
     </table>
