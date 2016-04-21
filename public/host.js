@@ -5,9 +5,10 @@ var url = "resistancegame.mybluemix.net";
 
 window.onload = function getRoom() {
 
-	
-	$.get( url.concat("/host"), function( data ) {
-	alert( "Data Loaded: " + data );
+	var v = url.concat("/host");
+	console.log(v);
+	$.get( v, function( data ) {
+	console.log( "Data Loaded: " + data );
 	document.getElementById("RoomNum").innerHTML = data;
 	});
 	//document.getElementById("RoomNum").innerHTML = a;
