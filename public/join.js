@@ -11,7 +11,7 @@ function startGame() {
 		var playerName = document.getElementById("name" + x).value;
 		var playerNum = document.getElementById("number" + x).value;
 		console.log(playerName);
-		if(playerName != "") {
+		if(playerName !== "") {
 			players[x - 1] = playerName;
 		}
 	}
@@ -20,7 +20,7 @@ function startGame() {
 	roomNum = document.getElementById("roomNum").value;
 
 	//safety checks
-	if(roomNum < 0 || roomNum == "") {
+	if(roomNum < 0 || roomNum === "") {
 		return null;
 	}
 	//make sure enough players have been entered
