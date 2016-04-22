@@ -11,7 +11,9 @@ function startGame() {
 		var playerName = document.getElementById("name" + x).value;
 		var playerNum = document.getElementById("number" + x).value;
 		console.log(playerName);
-		players[x - 1] = playerName;
+		if(playerName != "") {
+			players[x - 1] = playerName;
+		}
 	}
 
 	//get room number
