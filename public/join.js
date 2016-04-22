@@ -10,7 +10,6 @@ function startGame() {
 	for(var x = 1; x < 11; x++) {
 		var playerName = document.getElementById("name" + x).value;
 		var playerNum = document.getElementById("number" + x).value;
-		console.log(playerName);
 		if(playerName !== "") {
 			players[x - 1] = playerName;
 		}
@@ -32,9 +31,8 @@ function startGame() {
 	console.log(players);
 	
 	//json to be posted
-	var json;
-	json.room = roomNum;
-	json.playerList = players;
+	var json = {"room": roomNum, "playersList": players};
+   
 	
 	console.log(json);
 	
