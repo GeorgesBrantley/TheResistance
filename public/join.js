@@ -8,8 +8,8 @@ function startGame() {
 	
 	//get all players
 	for(var x = 1; x < 11; x++) {
-		var playerName = document.getElementById("name" + x);
-		var playerNum = document.getElementById("number1" + x);
+		var playerName = document.getElementById("name" + x).value;
+		var playerNum = document.getElementById("number1" + x).value;
 		
 		players[x - 1] = playerName;
 	}
