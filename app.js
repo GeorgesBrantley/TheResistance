@@ -90,7 +90,7 @@ function Game(gamecode) {
 	this.voteFails = 0;
 }
 app.get('/host', function (req, res) {
-		res.send('Hosted game code is: ' + gameRoom);
+		res.send('Game ' + gameRoom);
         var a = new Game(gameRoom);
 		games[gameRoom] = a;
 		gameRoom++;

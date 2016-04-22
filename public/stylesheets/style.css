@@ -27,6 +27,12 @@ a:hover {
 	max-width:200px;
 }
 
+img {
+	margin: 0 20px 0 20px;
+	height: 42px;
+	width: 42px;
+}
+
 h1 {
 	font-weight: bold;
 	font-size: 2em;
