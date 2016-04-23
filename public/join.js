@@ -6,6 +6,9 @@ var players = [];
 
 function startGame() {
 	
+	
+	console.log("startGame");
+	
 	//get all players
 	for(var x = 1; x < 11; x++) {
 		var playerName = document.getElementById("name" + x).value;
@@ -18,6 +21,8 @@ function startGame() {
 			current.teamLeader = 0;
 			current.mission = 0;
 			current.phone = playerNum;
+			
+			console.log(current);
 			
 			//add current to array 
 			players[x - 1] = current;
