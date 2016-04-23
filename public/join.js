@@ -11,7 +11,16 @@ function startGame() {
 		var playerName = document.getElementById("name" + x).value;
 		var playerNum = document.getElementById("number" + x).value;
 		if(playerName !== "") {
-			players[x - 1] = playerName;
+			//create player object
+			var current;
+			current.name = playerName;
+			current.side = 0;
+			current.teamLeader = 0;
+			current.mission = 0;
+			current.phone = playerNum;
+			
+			//add current to array 
+			players[x - 1] = current;
 		}
 	}
 

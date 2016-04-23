@@ -100,6 +100,7 @@ app.get('/host', function (req, res) {
 app.post('/join', function (req, res) {
 		var json = req.body;
 		var roomNumber = json.parse("room");
+		console.log(roomNumber);
 		var playersList = json.parse("playersList");
 		var spy1, spy2, spy3, spy4;
 		
