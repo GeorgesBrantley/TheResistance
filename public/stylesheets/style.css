@@ -104,11 +104,10 @@ pre {
 	overflow: auto;
 }
 
-.circlesRow {
+.centered {
 	position: absolute;
 	left: 50%;
-	width: 950px;
-	margin-left: -475px;
+	transform: tanslate(0, 50%);
 }
 
 
