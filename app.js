@@ -104,11 +104,11 @@ app.post('/join', function (req, res) {
 		var playersList = json.parse("playersList");
 		var spy1, spy2, spy3, spy4;
 		
-		console.log(playersList);
 		
 		games[roomNumber].Players = playersList;
 		games[roomNumber].playersNum = games[roomNumber].Players.length;
 		
+		console.log("HERERERERERE:     " + playersList + ' ' + games[roomNumber].playersNum);
 		var S = games[roomNumber].playersNum;
 		
 		//LEADERS
