@@ -52,6 +52,6 @@ function startGame() {
 	//post data to server
 	$.post( "/join", json, function(data) {
 		console.log(data);
-	});
+	}, "json");
 }
 	
