@@ -100,7 +100,8 @@ app.get('/host', function (req, res) {
 app.post('/join', function (req, res) {
 		var json = req.body;
 		var roomNumber = json.room;
-		var playersList = json.playersList;
+		var playersList = [];
+		playersList = json.playersList;
 		
 		console.log(playersList);
 		res.send(playersList + ' ' + json.playersList);
@@ -216,6 +217,8 @@ app.get('/:id/getHost', function (req, res) {
 //GET PLAYERS
 app.get('/:id/getPlayers', function (req, res) {
 		var roomId = req.params.id;
+		if (games[roomId].Players === null)
+			res.send(null);
 		res.send(games[roomId].Players);
 });
 //GET SPIES
