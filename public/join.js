@@ -50,8 +50,9 @@ function startGame() {
 	console.log('HERE: '+ json);
 	
 	//post data to server
-	$.post( "/join", json), function(data) {
+	$.post( "/join", json, function(data) {
 		console.log(data);
 	});
+
 }
 	
