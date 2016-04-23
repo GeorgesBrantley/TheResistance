@@ -100,13 +100,13 @@ app.get('/host', function (req, res) {
 app.post('/join', function (req, res) {
 		var json = req.body;
 		var roomNumber = json.room;
-		console.log(roomNumber);
 		var playersList = json.playersList;
 		var spy1, spy2, spy3, spy4;
 		
 		
 		games[roomNumber].Players = playersList;
 		games[roomNumber].playersNum = games[roomNumber].Players.length;
+		res.send('GEORGE:' + games[roomNumber].Players);
 		
 		console.log("HERERERERERE:     " + playersList + ' ' + games[roomNumber].playersNum);
 		var S = games[roomNumber].playersNum;
