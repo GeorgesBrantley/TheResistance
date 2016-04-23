@@ -98,12 +98,6 @@ pre {
 	overflow: auto;
 }
 
-.centered {
-	position: absolute;
-	left: 50%;
-	transform: tanslate(0, 50%);
-}
-
 
 
 
