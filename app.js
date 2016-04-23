@@ -30,18 +30,13 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 
 
 //TWILIO
-var config = JSON.parse(process.env.VCAP_SERVICES || "{}");
 var twilioSid, twilioToken;
-config['user-provided'].forEach(function(service) {
-		if (service.name === 'Twilio-pn') {
-			twilioSid = service.credentials.accountSID;
-			twilioToken = service.credentials.authToken;
-		}
-});
 app.get('/txt', function (req, res) {
    var client = new twilio.RestClient(twilioSid, twilioToken);
-  	var tonum ='13174323028';
-  	var fromnum = '13175486514';
+   	twilioSid = 'AC51499ee21f97088d905d385e9096c686';
+	twilioToken = 'a5ebc151376ec3f15ea2810fc15ffb32';
+  	var tonum ='+13174323028';
+  	var fromnum = '+13175486514';
   	var message = 'dfsdfsds';
   client.sendMessage(
      {
