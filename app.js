@@ -98,8 +98,13 @@ app.get('/host', function (req, res) {
 //Add players to game, after game has been made
 //Make them spies
 app.post('/join', function (req, res) {
+<<<<<<< HEAD
 		var js = req.body;
 		res.send('Players: ' + js);
+=======
+		var js = req;
+		res.send('Players: ' + req.body.toString());
+>>>>>>> fc603cb731f0e0c0592f3bbc23b65e8e77d6c716
 		var json = JSON.parse(js);
 		res.send('Players: ' + json);
 		var roomNumber = json.room;
