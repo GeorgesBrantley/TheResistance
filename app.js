@@ -101,10 +101,10 @@ app.post('/join', function (req, res) {
 		var json = req.body;
 		var roomNumber = json.room;
 		var playersList = [];
-		playersList = json.playersList;
+		playersList = json.playersList.clone();
 		
 		console.log(playersList);
-		res.send(playersList + ' ' + json.playersList);
+		res.send('Players: ' + playersList + ' ROOMJSON:' + json.room);
 		
 		/*
 		var spy1, spy2, spy3, spy4;
