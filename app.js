@@ -94,9 +94,9 @@ app.get('/host', function (req, res) {
 //Make them spies
 app.post('/join', function (req, res) {
 		var json = req.body;
-		var roomNumber = json.parse("room");
+		var roomNumber = json.room;
 		console.log(roomNumber);
-		var playersList = json.parse("playersList");
+		var playersList = json.playersList;
 		var spy1, spy2, spy3, spy4;
 		
 		
