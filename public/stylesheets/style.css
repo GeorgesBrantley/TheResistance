@@ -75,10 +75,6 @@ th, td {
 	padding: 2px 20px;
 }
 
-tr {
-	left: 50%;
-}
-
 .env-var {
 	text-align: right;
 	border-right: 1px solid #000;
@@ -106,6 +102,15 @@ pre {
 	bottom: 30px;
 	left: 60px;
 	overflow: auto;
+}
+
+.circlesRow {
+	top: 50%;
+	left: 50%;
+	height: 150px;
+	width: 950px;
+	margin-top: -75px;
+	margin-left: -475px;
 }
 
 
