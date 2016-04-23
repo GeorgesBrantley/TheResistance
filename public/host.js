@@ -7,13 +7,24 @@ var roomNum;
 //get room number
 window.onload = function getRoom() {
 
-	var v = url.concat("/host");
-	console.log(v);
 	$.get( "/host", function( data ) {
 	document.getElementById("RoomNum").innerHTML = data;
 	roomNum = data;
 	sessionStorage.postItem('RoomNumber', roomNum);
 	});
+	
+	
+	$.get("/" + roomNum + "/getPlayers", function( data ){
+		
+		
+		
+		var round1 = document.getElementById(round1);
+		var round2 = document.getElementById(round2);
+		var round3 = document.getElementById(round3);
+		var round4 = document.getElementById(round4);
+		var round5 = document.getElementById(round5);
+	});
 };
+
 
 //get initial game info
