@@ -16,8 +16,6 @@ window.onload = function getRoom() {
 	
 	$.get("/" + roomNum + "/getPlayers", function( data ){
 		
-		
-		
 		var round1 = document.getElementById(round1);
 		var round2 = document.getElementById(round2);
 		var round3 = document.getElementById(round3);
