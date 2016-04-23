@@ -15,6 +15,11 @@ var cfenv = require('cfenv');
 // create a new express server
 var app = express();
 
+//PARSER
+var bodyParser = require("body-parser");
+var jsonParser = bodyParser.json();
+app.use(jsonParser);
+
 //TWILIO
 var twilio = require('twilio');
 
