@@ -101,13 +101,16 @@ app.post('/join', function (req, res) {
 		var json = req.body;
 		var roomNumber = json.room;
 		var playersList = json.playersList;
-		var spy1, spy2, spy3, spy4;
 		
+		console.log(playersList);
+		res.send(playersList + ' ' + json.playersList);
+		
+		/*
+		var spy1, spy2, spy3, spy4;
 		
 		games[roomNumber].Players = playersList.slice(0);
 		games[roomNumber].playersNum = games[roomNumber].Players.length;
-		res.send('GEORGE:' + games[roomNumber].Players);
-		
+
 		res.send("HERERERERERE:     " + playersList + ' ' + games[roomNumber].playersNum);
 		var S = games[roomNumber].playersNum;
 		
@@ -185,6 +188,7 @@ app.post('/join', function (req, res) {
 		else {
 			res.send(games[roomNumber].playersNum + ' Have Joined, ' + games[roomNumber].numberOfSpies + ' are Spies!\n');
 		}
+		*/
 });
 app.get('/getGames', function (req, res) {
 		res.send(games);		
