@@ -8,7 +8,8 @@
 	"dependencies": {
 		"express": "4.13.x",
 		"cfenv": "1.0.x",
-		"twilio": "^1.6.0"
+		"twilio": "^1.6.0",
+		"body-parser": "*"
 	},
 	"repository": {},
 	"engines": {
