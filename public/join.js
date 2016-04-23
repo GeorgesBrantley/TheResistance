@@ -47,10 +47,10 @@ function startGame() {
 	var json = {"room": roomNum, "playersList": players};
    
 	
-	console.log(json.stringify(json));
+	console.log('HERE: '+ json);
 	
 	//post data to server
-	$.post( "/join", JSON.stringify(json), function(data) {
+	$.post( "/join", json), function(data) {
 		console.log(data);
 	});
 }
