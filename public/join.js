@@ -15,10 +15,9 @@ function startGame() {
 		var playerNum = document.getElementById("number" + x).value;
 		if(playerName !== "") {
 			//create player object
-			var current;
+			var current = {};
 			current.name = playerName;
 			current.side = 0;
-			current.teamLeader = 0;
 			current.mission = 0;
 			current.phone = playerNum;
 			
