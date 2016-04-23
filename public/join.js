@@ -41,7 +41,7 @@ function startGame() {
 	}
 	
 	console.log(roomNum);
-	console.log(players);
+	console.log(players.toString());
 	
 	//json to be posted
 	var json = {"room": roomNum, "playersList": players};
