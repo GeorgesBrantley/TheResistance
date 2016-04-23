@@ -102,7 +102,7 @@ app.post('/join', function (req, res) {
 		res.send('Players: ' + js);
 
 		var js = req;
-		res.send('Players: ' + req.body.toString());
+		res.send('Players: ' + JSON.stringify(req.body[0]));
 
 		var json = JSON.parse(js);
 		res.send('Players: ' + json);
