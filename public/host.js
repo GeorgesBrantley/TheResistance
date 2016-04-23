@@ -10,7 +10,6 @@ window.onload = function getRoom() {
 	$.get( "/host", function( data ) {
 	document.getElementById("RoomNum").innerHTML = data;
 	roomNum = data;
-	sessionStorage.postItem('RoomNumber', roomNum);
 	});
 	
 	
