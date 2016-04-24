@@ -41,20 +41,19 @@ function startGame() {
 		return null;
 	}
 	
-	console.log(roomNum);
-	console.log('PLAYERS: ' + players.toString().toString());
+	console.log();
 	
 	//json to be posted
 	var json = {"room": roomNum, "playersList": players};
    
 	var js = JSON.stringify(json);	
-	console.log('json: '+ js);
+	console.log('\nPLAYERS: ' + players+ 'JOIN\nJson: '+ json + '\nStringJS: '+ js);
 
 	
 	//post data to server
 	$.post( "/join", js, function(data) {
 		console.log(data);
-	}, "text");
+	}, "json");
 
 }
 	

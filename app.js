@@ -100,9 +100,10 @@ app.get('/host', function (req, res) {
 app.post('/join', function (req, res) {
 		var js = req.body;
 		var jsString = JSON.stringify(js);
+		var jsToString = jsString.toString();
 		var roomNumber = js.room;
 		var playersList = js.playersList;
-				res.send('js: ' + js +'\njsSTRING: ' + jsString + '\nRN: ' + typeof roomNumber + ', PL: ' +playersList);
+				res.send('js: ' + js +'\njsSTRING: ' + jsString + '\ntoString: ' + jsToString + '\nRN: ' + typeof roomNumber + ', PL: ' +playersList);
 		console.log('RN: ' + typeof roomNumber + ', PL: ' +playersList);
 		
 		/*
