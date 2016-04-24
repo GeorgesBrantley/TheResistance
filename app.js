@@ -200,10 +200,10 @@ app.get('/:id/getHost', function (req, res) {
 			'Spy Wins: ' + games[Id].spyWins + '\n' +
 			'Round Order: ' + games[Id].maxChosen + '\n' +
 			'Current Round: ' + games[Id].round + '\n' + 
-			'Players: ' + games[Id].Players + '\n'+
+			'Players: ' + JSON.stringify(games[Id].Players) + '\n'+
 			'Players Chosen/Max able to Choose: ' + games[Id].chosen + '/' +games[Id].maxChosen[games[Id].round] + '\n'
 			+'Chosen Players: ' + games[Id].Mission + '\n' + 
-			'Team Leader: ' + games[Id].Players[games[Id].Leaders[0]] + '\n'+
+			'Team Leader: ' + JSON.stringify(games[Id].Players[games[Id].Leaders[0]]) + '\n'+
 			'Failed Votes: ' + games[Id].voteFails + '\n');
 			
 			//Need to reset Players Chosen and Chosen Players every round
@@ -299,6 +299,7 @@ app.post('/:id/select', function (req, res) {
 		var roomId = req.params.id;
 		var json = req.body;
 		var name = json.name;
+		
 		for (var x = 0; x < games[roomId].playersNum; ++x) {
 			if (name === games[roomId].Players[x].name) {
 					if (games[roomId].Players[x].mission === 0) {
@@ -332,7 +333,7 @@ app.get('/:id/whoMission', function (req, res) {
 			}	
 		}
 		games[roomId].Mission = onMission;
-		res.send(onMission);
+		res.send(JSON.stringify(onMission));
 });
 app.get('/:id/totalSelected', function(req, res) {
 		var id = req.params.id;

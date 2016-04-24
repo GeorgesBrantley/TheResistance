@@ -21,6 +21,7 @@ function startGame() {
 			current.side = 0;
 			current.mission = 0;
 			current.phone = playerNum;
+			current.teamLeader = 0;
 			
 			console.log(current);
 			
