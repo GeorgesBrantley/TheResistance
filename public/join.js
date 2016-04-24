@@ -65,7 +65,8 @@ function startGame() {
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("POST", "/join");
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xmlhttp.send(JSON.stringify({name:"bla", time:"2pm"}));
+	xmlhttp.send(JSON.stringify({name:"bla", list:["HI","BYE", "DOG","CAT"]}));
+	console.log(xmlhttp.responseText);
 
 }
 	
