@@ -195,16 +195,27 @@ app.get('/getGames', function (req, res) {
 app.get('/:id/getHost', function (req, res) {
 	var Id = req.params.id;
 	
-	res.send('Room Number: ' + games[Id].roomnum + '\n' +
-			'Resistance Wins: '+ games[Id].resWins + '\n'+
-			'Spy Wins: ' + games[Id].spyWins + '\n' +
-			'Round Order: ' + games[Id].maxChosen + '\n' +
-			'Current Round: ' + games[Id].round + '\n' + 
-			'Players: ' + JSON.stringify(games[Id].Players) + '\n'+
-			'Players Chosen/Max able to Choose: ' + games[Id].chosen + '/' +games[Id].maxChosen[games[Id].round] + '\n'
+	var List = [];
+	for(var x = 0; x < games[Id].playersNum; ++x) {
+		List.push(games[Id].Players[games[Id].Leaders[x]]);
+	}
+	var doubleJepardy = '';
+	if (games[Id].round === 4 && games[Id].playersNum >= 7)
+		doubleJepardy = 'YES';
+	else
+		doubleJepardy = 'NO';
+		
+	res.send('Room Number: ' + games[Id].roomnum + '\n\n' +
+			'Resistance Wins: '+ games[Id].resWins + '\n\n'+
+			'Spy Wins: ' + games[Id].spyWins + '\n\n' +
+			'Round Order: ' + games[Id].maxChosen + '\n\n' +
+			'Current Round: ' + games[Id].round + '\n\n' + 
+			'Players: ' + List + '\n\n'+
+			'Players Chosen/Max able to Choose: ' + games[Id].chosen + '/' +games[Id].maxChosen[games[Id].round] + '\n\n'
 			+'Chosen Players: ' + games[Id].Mission + '\n' + 
-			'Team Leader: ' + JSON.stringify(games[Id].Players[games[Id].Leaders[0]]) + '\n'+
-			'Failed Votes: ' + games[Id].voteFails + '\n');
+			'Team Leader: ' + JSON.stringify(games[Id].Players[games[Id].Leaders[0]]) + '\n\n'+
+			'Failed Votes: ' + games[Id].voteFails + '\n\n' +
+			'Double Jepardy' + doubleJepardy + '\n\n');
 			
 			//Need to reset Players Chosen and Chosen Players every round
 });
