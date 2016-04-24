@@ -105,7 +105,8 @@ app.post('/join', function (req, res) {
 		//var playersList = js.playersList;
 		
 		//console.log('SERVER\njs: ' + js +'\njsSTRING: ' + jsString + '\ntoString: ' + jsToString + '\nRN: ' + roomNumber + ', PL: ' +playersList+'\n');
-		res.send(js);
+		console.log('\nSERVER: ' +js +'\nName: ' + js.name+ '\nArray: ' + js.list);
+		res.send('\nSERVER: ' +js +'\nName: ' + js.name+ '\nArray: ' + js.list);
 		/*
 		var spy1, spy2, spy3, spy4;
 		
