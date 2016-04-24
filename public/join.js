@@ -49,11 +49,10 @@ function startGame() {
 	//var json = {"room": roomNum, "playersList": players.toString()};
 
 	var json = {"room": "r", "playersList": "p"};
-	var js = JSON.stringify(json);	
 	var test1 = json.room;
 	var test2 = json.playersList;
-	console.log('\nJOIN \nPLAYERS: ' + players+ '\nJson: '+ json + '\nStringJS: '+ js+'\n'
-				+ '\nObjectRoom: ' + test1 + '\nObjectList: ' +test2);
+	console.log('\nJOIN \nPLAYERS: ' + players+ '\nJson: '+ json + 
+	'\nObjectRoom: ' + test1 + '\nObjectList: ' +test2);
 
 	
 	//post data to server
@@ -65,7 +64,7 @@ function startGame() {
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("POST", "/join");
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-	xmlhttp.send(JSON.stringify({name:"bla", list:["HI","BYE", "DOG","CAT"]}));
+	xmlhttp.send(JSON.stringify(json));
 	console.log(xmlhttp.responseText);
 
 }
