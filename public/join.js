@@ -47,12 +47,12 @@ function startGame() {
 	var js = JSON.stringify(json);	
 	var test1 = json.room;
 	var test2 = json.playersList;
-	console.log('\nJOIN\nPLAYERS: ' + players+ '\nJson: '+ json + '\nStringJS: '+ js+'\n'
+	console.log('\nJOIN \nPLAYERS: ' + players+ '\nJson: '+ json + '\nStringJS: '+ js+'\n'
 				+ '\nObjectRoom: ' + test1 + '\nObjectList: ' +test2);
 
 	
 	//post data to server
-	$.post( "/join", json, function(data) {
+	$.post( "/join", {"stuff":"duh"}, function(data) {
 		console.log(data);
 	});
 

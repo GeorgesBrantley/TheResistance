@@ -99,13 +99,13 @@ app.get('/host', function (req, res) {
 //Make them spies
 app.post('/join', function (req, res) {
 		var js = req.body;
-		var jsString = JSON.stringify(js);
-		var jsToString = js.toString();
-		var roomNumber = js.room;
-		var playersList = js.playersList;
+		//var jsString = 'nope';
+		//var jsToString = js.toString();
+		//var roomNumber = js.room;
+		//var playersList = js.playersList;
 		
-		console.log('SERVER\njs: ' + js +'\njsSTRING: ' + jsString + '\ntoString: ' + jsToString + '\nRN: ' + roomNumber + ', PL: ' +playersList+'\n');
-		
+		//console.log('SERVER\njs: ' + js +'\njsSTRING: ' + jsString + '\ntoString: ' + jsToString + '\nRN: ' + roomNumber + ', PL: ' +playersList+'\n');
+		res.send(js);
 		/*
 		var spy1, spy2, spy3, spy4;
 		
