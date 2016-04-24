@@ -41,17 +41,20 @@ function startGame() {
 	}
 	
 	console.log(roomNum);
-	console.log(players.toString());
+	console.log(players[0].name);
 	
 	//json to be posted
-	var json = {"room": roomNum, "playersList": players};
-   
-	
-	console.log(json.stringify(json));
+	var json = {"room": roomNum, "playersList": players.toString()};
 	
 	//post data to server
-	$.post( "/join", JSON.stringify(json), function(data) {
+/*	$.post( "/join", {data: "hey"}, function(data) {
 		console.log(data);
 	});
+*/	
+	//new post
+	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+	xmlhttp.open("POST", "/join");
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(JSON.stringify({name:"bla", time:"2pm"}));
 }
 	
