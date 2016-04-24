@@ -98,7 +98,7 @@ app.get('/host', function (req, res) {
 //Add players to game, after game has been made
 //Make them spies
 app.post('/join', function (req, res) {
-		var js = req;
+		var js = req.body;
 		var jsString = JSON.stringify(js);
 		var jsToString = js.toString();
 		var roomNumber = js.room;
