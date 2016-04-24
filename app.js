@@ -99,20 +99,17 @@ app.get('/host', function (req, res) {
 //Make them spies
 app.post('/join', function (req, res) {
 		var js = req.body;
-		//var jsString = 'nope';
-		//var jsToString = js.toString();
-		//var roomNumber = js.room;
-		//var playersList = js.playersList;
+		var roomNumber = js.room;
+		var playersList = js.playersList;
 		
-		//console.log('SERVER\njs: ' + js +'\njsSTRING: ' + jsString + '\ntoString: ' + jsToString + '\nRN: ' + roomNumber + ', PL: ' +playersList+'\n');
-		res.send('\nSERVER: ' +js +'\nName: ' + js.room+ '\nArray: ' + js.playerList);
-		/*
+		console.log('\nSERVER: ' +js 
+					+'\nRoom: ' + roomNumber+ '\nPlayers: ' + playersList);
+		
 		var spy1, spy2, spy3, spy4;
 		
 		games[roomNumber].Players = playersList.slice(0);
 		games[roomNumber].playersNum = games[roomNumber].Players.length;
 
-		res.send("HERERERERERE:     " + playersList + ' ' + games[roomNumber].playersNum);
 		var S = games[roomNumber].playersNum;
 		
 		//LEADERS
@@ -189,7 +186,6 @@ app.post('/join', function (req, res) {
 		else {
 			res.send(games[roomNumber].playersNum + ' Have Joined, ' + games[roomNumber].numberOfSpies + ' are Spies!\n');
 		}
-		*/
 });
 app.get('/getGames', function (req, res) {
 		res.send(games);		

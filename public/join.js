@@ -41,14 +41,11 @@ function startGame() {
 		return null;
 	}
 	
-	console.log(roomNum);
-	console.log(players[0].name);
-
 	//json to be posted
 
 	//var json = {"room": roomNum, "playersList": players.toString()};
 
-	var json = {"room": "r", "playersList": "p"};
+	var json = {"room": roomNum, "playersList": players};
 	var test1 = json.room;
 	var test2 = json.playersList;
 	console.log('\nJOIN \nPLAYERS: ' + players+ '\nJson: '+ json + 
