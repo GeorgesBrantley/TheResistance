@@ -41,17 +41,16 @@ function startGame() {
 		return null;
 	}
 	
-	console.log();
-	
+
 	//json to be posted
 	var json = {"room": roomNum, "playersList": players};
-   
 	var js = JSON.stringify(json);	
-	console.log('\nPLAYERS: ' + players+ 'JOIN\nJson: '+ json + '\nStringJS: '+ js);
+	
+	console.log('\nJOIN\nPLAYERS: ' + players+ '\nJson: '+ json + '\nStringJS: '+ js+'\n');
 
 	
 	//post data to server
-	$.post( "/join", js, function(data) {
+	$.post( "/join", json, function(data) {
 		console.log(data);
 	}, "json");
 
