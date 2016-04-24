@@ -2,12 +2,12 @@
 var roomNum = sessionStorage.getItem("roomNum");
 console.log(roomNum);
 function getLeader() {
-		var leader;
+		console.log("/" + roomNum + "/getLeader");
 		$.get( "/" + roomNum + "/getLeader" , function( data ) {
-			leader = data;
-			console.log(data);
+			var leader = data.name;
+			console.log("data: " + data);
+			console.log("leader: " + leader);
+			var str = "Current leader is " + leader;
+			document.getElementById("leader").innerHTML = str;
 		});
-		console.log(leader);
-		var str = "Current leader is " + leader;
-		document.getElementById("leader").innerHTML = str;
 }
