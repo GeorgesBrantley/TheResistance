@@ -6,6 +6,7 @@ var players = [];
 
 function startGame() {
 	
+	players = [];
 	
 	console.log("startGame");
 	
@@ -24,7 +25,7 @@ function startGame() {
 			console.log(current);
 			
 			//add current to array 
-			players[x - 1] = current;
+			players.push(current);
 		}
 	}
 
@@ -42,9 +43,18 @@ function startGame() {
 	
 	console.log(roomNum);
 	console.log(players[0].name);
-	
+
 	//json to be posted
-	var json = {"room": roomNum, "playersList": players.toString()};
+
+	//var json = {"room": roomNum, "playersList": players.toString()};
+
+	var json = {"room": "r", "playersList": "p"};
+	var js = JSON.stringify(json);	
+	var test1 = json.room;
+	var test2 = json.playersList;
+	console.log('\nJOIN \nPLAYERS: ' + players+ '\nJson: '+ json + '\nStringJS: '+ js+'\n'
+				+ '\nObjectRoom: ' + test1 + '\nObjectList: ' +test2);
+
 	
 	//post data to server
 /*	$.post( "/join", {data: "hey"}, function(data) {
@@ -56,5 +66,6 @@ function startGame() {
 	xmlhttp.open("POST", "/join");
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xmlhttp.send(JSON.stringify({name:"bla", time:"2pm"}));
+
 }
 	
