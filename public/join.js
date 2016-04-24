@@ -6,6 +6,7 @@ var players = [];
 
 function startGame() {
 	
+	players = [];
 	
 	console.log("startGame");
 	
@@ -24,7 +25,7 @@ function startGame() {
 			console.log(current);
 			
 			//add current to array 
-			players[x - 1] = current;
+			players.push(current);
 		}
 	}
 
@@ -41,18 +42,19 @@ function startGame() {
 	}
 	
 	console.log(roomNum);
-	console.log(players.toString());
+	console.log('PLAYERS: ' + players.toString().toString());
 	
 	//json to be posted
 	var json = {"room": roomNum, "playersList": players};
    
-	
-	console.log('HERE: '+ json);
+	var js = JSON.stringify(json);	
+	console.log('json: '+ js);
+
 	
 	//post data to server
-	$.post( "/join", json, function(data) {
+	$.post( "/join", js, function(data) {
 		console.log(data);
-	});
+	}, "text");
 
 }
 	

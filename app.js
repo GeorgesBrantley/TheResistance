@@ -100,12 +100,10 @@ app.get('/host', function (req, res) {
 app.post('/join', function (req, res) {
 		var js = req.body;
 
-		var roomNumber = js[1];
-		var playersList = js[0];
-
-		res.send('ROOM NUM: ' + roomNumber);
-		
-		
+		var roomNumber = js.room;
+		var playersList = js.playersList;
+				console.log('js: ' + js + 'RN: ' + typeof roomNumber + ', PL: ' +playersList);
+		console.log('RN: ' + typeof roomNumber + ', PL: ' +playersList);
 		
 		/*
 		var spy1, spy2, spy3, spy4;
@@ -217,10 +215,12 @@ app.get('/:id/getHost', function (req, res) {
 //GET THINGS
 //GET PLAYERS
 app.get('/:id/getPlayers', function (req, res) {
-		var roomId = req.params.id;
-		if (games[roomId].Players === null)
-			res.send(null);
+	var roomId = req.params.id;
+	try {
 		res.send(games[roomId].Players);
+	} catch (err) {
+		res.send(null);
+	}
 });
 //GET SPIES
 app.get('/:id/getSpies', function (req, res) {
