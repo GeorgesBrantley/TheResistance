@@ -34,7 +34,7 @@ function startGame() {
 	//get room number
 	roomNum = document.getElementById("roomNum").value;
 	sessionStorage.setItem("roomNum", roomNum);
-	sessionStorage.numPlayers = players.length;
+	//sessionStorage.numPlayers = players.length;
 
 	//safety checks
 	if(roomNum < 0 || roomNum === "") {
