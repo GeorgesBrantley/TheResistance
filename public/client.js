@@ -28,7 +28,7 @@ function getList() {
 */
 
 	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
-		players = JSON.parse(data);
+		players = data;
 	});
 
 
