@@ -45,7 +45,7 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-		  checkBox.onchange=select(checkBox.value);
+		  checkBox.setAttribute("onchange", select(x));
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
@@ -61,7 +61,7 @@ function buildTable() {
   	 fbutton.value="Vote on mission";
   	 fbutton.type="button";
   	 fbutton.innerHTML="Vote on mission";
-  	// fbutton.setAttribute("onclick", function() { alert("blabla"); });
+  	//fbutton.setAttribute("onclick", function() { alert("blabla"); });
   	 ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
