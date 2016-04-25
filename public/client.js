@@ -71,7 +71,6 @@ function buildTable() {
   	 var fbutton = document.createElement('button');
   	 fbutton.value="Vote on mission";
   	 fbutton.innerHTML="Vote on mission";
-  	 fbutton.onclick = window.location.href = "vote.html";
   	 ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
