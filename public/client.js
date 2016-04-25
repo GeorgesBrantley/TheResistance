@@ -34,7 +34,7 @@ function getList() {
 
 	var table = document.getElementById("playerList");
 	console.log("Size of players: " + players.length);
-	for(var x = 0; x < players.length; x++) {
+	for(var x = 1; x < players.length + 1; x++) {
 		console.log("data[x].name = " + players[x].name);
 		var row = table.insertRow(x);
 		var cell1 = row.insertCell(0);
