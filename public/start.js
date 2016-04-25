@@ -7,11 +7,11 @@ window.onload = function getRoom() {
 	
 	if (sessionStorage.getItem('gameNum') === null) {
 		$.get("/host", function(data) {
-			console.log("Data: " + data);
+			console.log("Data: " + data + "\n");
 			var room = parseInt(data.substring(1), 10);
-			console.log("Room: " + room);
+			console.log("Room: " + room + "\n");
 			sessionStorage.gameNum = room;
-			console.log("GameNum: " + sessionStorage.gameNum);
+			console.log("GameNum: " + sessionStorage.gameNum + "\n");
 		});
 	}
 
