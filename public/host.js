@@ -84,6 +84,8 @@ function pull() {
 					+ "\nspyWins= " + spyWins
 					+ "\nresWins= " + resWins + "\n");
 		if (thisRound > currentRound) {
+			console.log("in if statement\n");
+			console.log("Current round: " + currentRound);
 			if (spyWins > currSpyWins) {
 				roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
 				currSpyWins = spyWins;
