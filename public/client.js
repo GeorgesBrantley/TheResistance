@@ -65,11 +65,10 @@ function buildTable() {
   	fbutton.value="Vote on mission";
   	fbutton.type="button";
   	fbutton.innerHTML="Vote on mission";
-  	fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
+ // 	fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
   	ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
-	
 	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
