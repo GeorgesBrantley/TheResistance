@@ -15,7 +15,8 @@ window.onload = function getRoom() {
 	
 	$.get("/host", function(data) {	
 		var roomNumThing = document.getElementById('RoomNumHeader');
-		roomNumThing.innerHTML = "Game: " + data;
+		roomNumThing.innerHTML = "Game: ";
+		roomNumThing.innerHTML = roomNumThing.innerHTML + data;
 		sessionStorage.gameNum = data;
 	});
 
@@ -34,7 +35,7 @@ window.onload = function getRoom() {
 	numberTexts.push(document.getElementById('round4Num'));
 	numberTexts.push(document.getElementById('round5Num'));		
 	
-	while (sessionStorage.numPlayer === null) {
+	while (sessionStorage.numPlayers === null) {
 		console.log("in while loop");
 		continue;
 	}
