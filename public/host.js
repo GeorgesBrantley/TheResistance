@@ -13,12 +13,17 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 //get room number
 window.onload = function getRoom() {
 	
-	$.get("/host", function(data) {	
-		var roomNumThing = document.getElementById('RoomNumHeader');
-		roomNumThing.innerHTML = "Game: ";
-		roomNumThing.innerHTML = roomNumThing.innerHTML + data;
-		sessionStorage.gameNum = data;
-	});
+	if (sessionStorage.getItem('gameNum') === null) {
+		$.get("/host", function(data) {
+			var room = parseInt(data.substring(1), 10);
+			sessionStorage.gameNum = room;
+		});
+	}
+
+	var roomNumThing = document.getElementById('RoomNumHeader');
+	roomNumThing.innerHTML = "Game: ";
+	roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
+			
 
 	
 	var roundCircles = [];
@@ -35,7 +40,7 @@ window.onload = function getRoom() {
 	numberTexts.push(document.getElementById('round4Num'));
 	numberTexts.push(document.getElementById('round5Num'));		
 	
-	while (sessionStorage.numPlayers === null) {
+	while (sessionStorage.getItem("numPlayers") === null) {
 		console.log("in while loop");
 		continue;
 	}
