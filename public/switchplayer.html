@@ -12,10 +12,17 @@
 		/*eslint-env browser, jquery*/
 		function getNextPlayer() {
 			var roomNum = sessionStorage.getItem("roomNum");
+			var player = sessionStorage.getItem("playerNum");
+			if(player === null) 
+				player = -1;
+			player++;
     		$.get( "/" + roomNum + "/whoMission", function( data ) {
-				var str = "Pass the phone to " + data.name;
+				var str = "Pass the phone to " + data[player].name;
 				document.getElementById("par").innerHTML = str;
 			});
+			
+			//update for next player
+			sessionStorage.setItem("playerNum", player);
     	}
     	function switchPageMission() {
     		window.location.href="mission.html";
