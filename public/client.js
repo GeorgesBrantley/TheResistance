@@ -58,17 +58,16 @@ function buildTable() {
 		  tr.appendChild(td);
 		  table.appendChild(tr);
 	}
-	var ftr = document.createElement('tr'); 
+/*	var ftr = document.createElement('tr'); 
   	var ftd = document.createElement('td');
   	var fbutton = document.createElement('input');
   	fbutton.value="Vote on mission";
   	fbutton.type="button";
   	fbutton.innerHTML="Vote on mission";
- // 	fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
   	ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
-	table.style.border="2px solid white";
+*/	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
 	//document.getElementById("t").appendChild(table);
@@ -99,4 +98,8 @@ function select(value) {
 	$.get( "/" + roomNum + "/whoMission", function( data ) {
 		console.log("whoMission: " + data);
 	});
+}
+
+function vote() {
+	window.location.href="vote.html";
 }
