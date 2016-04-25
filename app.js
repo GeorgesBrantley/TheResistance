@@ -448,7 +448,7 @@ app.get('/:id/getLeaderList', function(req, res) {
 				List.push(games[id].Players[games[id].Leaders[x]]);
 		}
 	}
-	res.send(List);
+	res.send(JSON.stringify(List));
 });
 //Make New Team Leader
 //Remove previous Team Leader, shift everything up
