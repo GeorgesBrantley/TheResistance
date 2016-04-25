@@ -53,6 +53,7 @@ function buildTable() {
 		  checkBox.type = "checkbox";
 		  checkBox.value = text;
 		  td.appendChild(checkBox);
+		  td.appendChild(text);
 		  tr.appendChild(td);
 		  table.appendChild(tr);
 	}
