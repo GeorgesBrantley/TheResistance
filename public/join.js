@@ -33,7 +33,7 @@ function startGame() {
 
 	//get room number
 	roomNum = document.getElementById("roomNum").value;
-	//sessionStorage.setItem("roomNum", roomNum);
+	sessionStorage.setItem("roomNum", roomNum);
 	sessionStorage.setItem("numPlayers", players.length);
 
 	//safety checks
