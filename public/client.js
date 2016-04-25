@@ -61,8 +61,10 @@ function buildTable() {
 		  checkBox.type = "checkbox";
 		  checkBox.value = text;
 		  td1.style.border= "1px solid white";
+		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
 		  td.appendChild(text);
+		  td.style.textAlign="left";
 		  tr.appendChild(td1);
 		  tr.appendChild(td);
 		  table.appendChild(tr);
@@ -72,6 +74,7 @@ function buildTable() {
   	 var fbutton = document.createElement('button');
   	 fbutton.value="Vote on mission";
   	 fbutton.innerHTML="Vote on mission";
+  	 fbutton.onclick="vote()";
   	 ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
@@ -80,6 +83,10 @@ function buildTable() {
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
 	document.body.appendChild(table);
+}
+
+function vote() {
+	window.location.href="vote.html";
 }
 
 /*
