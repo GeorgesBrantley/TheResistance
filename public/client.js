@@ -28,14 +28,15 @@ function getList() {
 */
 
 	var xhr = new XMLHttpRequest();
-	xhr.open('GET', "http://ipinfo.io/json", true);
+	xhr.open('GET', "/" + roomNum + "/getLeaderList", true);
 	xhr.send();
  
 	xhr.onreadystatechange = processRequest;
 	function processRequest(data) {
-		if(xhr.readyState === 4) {
+		if(xhr.readyState === 4 && xhr.status === 200) {
 			console.log("here");
-			players = data;
+			var response = JSON.parse(xhr.responseText);
+			players = response;
 		}
 
 	}
