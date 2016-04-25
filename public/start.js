@@ -17,7 +17,7 @@ window.onload = function getData() {
 	});
 	
 	var dataLength = 0;
-	while (dataLength === 0) {
+	while (dataLength == 0) {
 		console.log("dataLength=" + dataLength);
 		dataLength = setTimeout(askServer, 1000);
 	}
