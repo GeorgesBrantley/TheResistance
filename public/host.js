@@ -72,9 +72,13 @@ function pull() {
 			console.log(JSON.stringify(data));
 			}, false);
 			
-		var thisRound = parseInt(currentRoundInfo.indexOf("Current Round: "), 10);
-		var spyWins = parseInt(currentRoundInfo.indexOf("Spy Wins: "), 10);
-		var resWins = parseInt(currentRoundInfo.indexOf("Resistance Wins: "), 10);
+		var thisRoundLoc = currentRoundInfo.indexOf("Current Round: ");		
+		var spyWinsLoc = currentRoundInfo.indexOf("Spy Wins: ");
+		var resWinsLoc = currentRoundInfo.indexOf("Resistance Wins: ");
+		
+		var thisRound = parseInt(currentRoundInfo.substring(thisRoundLoc), 10);
+		var spyWins = parseInt(currentRoundInfo.substring(spyWinsLoc), 10);
+		var resWins = parseInt(currentRoundInfo.substring(resWinsLoc), 10);
 		console.log("thisRound= " + thisRound
 					+ "\nspyWins= " + spyWins
 					+ "\nresWins= " + resWins + "\n");
