@@ -2,7 +2,6 @@
 /*eslint-env browser, jquery*/
 console.log("running js");
 var url = "resistancegame.mybluemix.net";
-var roomNum;
 
 var roundNumbers = [[2, 3, 2, 3, 3],
 					[2, 3, 4, 3, 4],
@@ -12,9 +11,12 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 					[3, 4, 4, 5, 5]];
 
 //get room number
-window.onload = function getRoom() {	
+window.onload = function getRoom() {
 	
-	$.get("/" + roomNum + "/getLeaderList", function( data ){
+	var roomNumThing = document.getElementById(roomNum);
+	roomNumThing.innerHTML = "Game: " + sessionStorage.roomNum;
+	
+	$.get("/" + sessionStorage.roomNum + "/getLeaderList", function( data ){
 		
 		var roundCircles = [];
 		roundCircles.add(document.getElementById('round1Cir'));
