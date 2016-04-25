@@ -213,11 +213,8 @@ app.get('/:id/getHost', function (req, res) {
 //GET PLAYERS
 app.get('/:id/getPlayers', function (req, res) {
 	var roomId = req.params.id;
-	try {
-		res.send(games[roomId].Players);
-	} catch (err) {
-		res.send(null);
-	}
+	res.send(games[roomId].Players);
+	//	res.send(null);
 });
 //GET SPIES
 app.get('/:id/getSpies', function (req, res) {
