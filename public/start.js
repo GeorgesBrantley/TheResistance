@@ -1,7 +1,7 @@
 
 /*eslint-env browser, jquery*/
 console.log("running js");
-var gameNumLocal = -1;
+//var gameNumLocal = -1;
 
 
 window.onload = function getRoom() {
@@ -14,20 +14,19 @@ window.onload = function getRoom() {
 			var room = parseInt(data.substring(1), 10);
 			console.log("Room: " + room + "\n");
 			sessionStorage.setItem("gameNum", room);
-			gameNumLocal = room;
 			console.log("GameNum: " + sessionStorage.gameNum + "\n");
 			var roomNumThing = document.getElementById('RoomNumHeader');
 			roomNumThing.innerHTML = "Game: ";
 			console.log(sessionStorage.gameNum);
 			//while(sessionStorage.gameNum === null) continue;
-			roomNumThing.innerHTML = roomNumThing.innerHTML + gameNumLocal;
+			roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
 		});
 	} else {
 		var roomNumThing = document.getElementById('RoomNumHeader');
 		roomNumThing.innerHTML = "Game: ";
 		console.log(sessionStorage.gameNum);
 		//while(sessionStorage.gameNum === null) continue;
-		roomNumThing.innerHTML = roomNumThing.innerHTML + gameNumLocal;
+		roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
 		
 	}
 			
