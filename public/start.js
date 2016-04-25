@@ -1,7 +1,7 @@
 
 /*eslint-env browser, jquery*/
 console.log("running js");
-var url = "resistancegame.mybluemix.net";
+//var url = "resistancegame.mybluemix.net";
 var roomNum;
 
 function askServer() {
@@ -18,6 +18,7 @@ window.onload = function getData() {
 	
 	var dataLength = 0;
 	while (dataLength === 0) {
+		console.log("dataLength=" + dataLength);
 		dataLength = setTimeout(askServer, 1000);
 	}
 	window.location.href = "/host.html";
