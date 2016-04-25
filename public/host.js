@@ -21,18 +21,18 @@ window.onload = function getRoom() {
 
 	
 	var roundCircles = [];
-	roundCircles.add(document.getElementById('round1Cir'));
-	roundCircles.add(document.getElementById('round2Cir'));
-	roundCircles.add(document.getElementById('round3Cir'));
-	roundCircles.add(document.getElementById('round4Cir'));
-	roundCircles.add(document.getElementById('round5Cir'));
+	roundCircles.push(document.getElementById('round1Cir'));
+	roundCircles.push(document.getElementById('round2Cir'));
+	roundCircles.push(document.getElementById('round3Cir'));
+	roundCircles.push(document.getElementById('round4Cir'));
+	roundCircles.push(document.getElementById('round5Cir'));
 	
 	var numberTexts = [];
-	numberTexts.add(document.getElementById('round1Num'));
-	numberTexts.add(document.getElementById('round2Num'));
-	numberTexts.add(document.getElementById('round3Num'));
-	numberTexts.add(document.getElementById('round4Num'));
-	numberTexts.add(document.getElementById('round5Num'));		
+	numberTexts.push(document.getElementById('round1Num'));
+	numberTexts.push(document.getElementById('round2Num'));
+	numberTexts.push(document.getElementById('round3Num'));
+	numberTexts.push(document.getElementById('round4Num'));
+	numberTexts.push(document.getElementById('round5Num'));		
 	
 	while (sessionStorage.numPlayer === null) {
 		console.log("in while loop");
