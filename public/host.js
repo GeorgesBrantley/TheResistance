@@ -1,14 +1,22 @@
 
 /*eslint-env browser, jquery*/
 console.log("running js");
-var url = "resistancegame.mybluemix.net";
-
 var roundNumbers = [[2, 3, 2, 3, 3],
 					[2, 3, 4, 3, 4],
 					[2, 3, 3, 4, 4], 
 					[3, 4, 4, 5, 5], 
 					[3, 4, 4, 5, 5],
 					[3, 4, 4, 5, 5]];
+
+var roundCircles = [];
+	roundCircles.push(document.getElementById('round1Cir'));
+	roundCircles.push(document.getElementById('round2Cir'));
+	roundCircles.push(document.getElementById('round3Cir'));
+	roundCircles.push(document.getElementById('round4Cir'));
+	roundCircles.push(document.getElementById('round5Cir'));
+
+var currentRoundInfo;
+var currentRound = 0, currSpyWins = 0, currResWins = 0;
 
 /*function askServer() {
 	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
@@ -33,15 +41,6 @@ window.onload = function getRoom() {
 	var roomNumThing = document.getElementById('RoomNumHeader');
 	roomNumThing.innerHTML = "Game: ";
 	roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
-			
-
-	
-	var roundCircles = [];
-	roundCircles.push(document.getElementById('round1Cir'));
-	roundCircles.push(document.getElementById('round2Cir'));
-	roundCircles.push(document.getElementById('round3Cir'));
-	roundCircles.push(document.getElementById('round4Cir'));
-	roundCircles.push(document.getElementById('round5Cir'));
 	
 	var numberTexts = [];
 	numberTexts.push(document.getElementById('round1Num'));
@@ -67,10 +66,155 @@ function pull() {
         
      	$.get('/' + roomid + '/getHost', function(data) {
 			console.log(data);
+			currentRoundInfo = data;
 			}, false);
 		$.get('/' + roomid + '/getLeaderList', function(data) {
 			console.log(JSON.stringify(data));
 			}, false);
     }, 5000); // repeat forever, polling every 3 seconds
+	
+	var thisRound = parseInt(currentRoundInfo.indexof("Current Round: "), 10);
+	var spyWins = parseInt(currentRoundInfo.indexof("Spy Wins: "), 10);
+	var resWins = parseInt(currentRoundInfo.indexof("Resistance Wins: "), 10);
+	console.log("thisRound= " + thisRound
+				+ "\nspyWins= " + spyWins
+				+ "\nresWins= " + resWins);
+	if (thisRound > currentRound) {
+		if (spyWins > currSpyWins) {
+			roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
+			currSpyWins = spyWins;
+		} else {
+			roundCircles[currentRound].setAttribute('src', 'images/redCircle.png');
+			currResWins = resWins;
+		}
+		currentRound = thisRound;
+		roundCircles[currentRound].setAttribute('src', 'images/greenCircle.png');
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
