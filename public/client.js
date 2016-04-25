@@ -45,7 +45,9 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-		  checkBox.setAttribute("onchange", select(x));
+		  checkBox.onclick = function() {
+		  	select(x);
+		  };
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
