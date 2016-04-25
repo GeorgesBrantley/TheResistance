@@ -76,7 +76,7 @@ function check() {
 			if(num > maxPlayers) {
 				break;
 			}
-		} else if(!checkboxes[x].checked && prevcheckboxes[x].checked) {
+		} else if(checkboxes[x].checked === false && prevcheckboxes[x].checked) {
 			select(x);
 			num--;
 		}
