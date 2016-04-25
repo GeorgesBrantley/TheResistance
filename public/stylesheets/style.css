@@ -105,6 +105,11 @@ pre {
 	transform: translate(-50%, 0);
 }
 
+.centeredInParent {
+	position: fixed;
+	margin-left: 50%;
+	transform: translate(-50%, 0);
+}
 
 
 
