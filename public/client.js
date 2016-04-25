@@ -72,7 +72,7 @@ function buildTable() {
 }
 
 function select(value) {
-	var selected = {name:value.name};
+	var selected = {name:players[value].name};
 	console.log("selected: " + selected);
 	//send update to server
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
