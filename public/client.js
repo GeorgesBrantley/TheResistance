@@ -73,7 +73,7 @@ function buildTable() {
 function check() {
 	var num = 0;
 	for(var x = 0; x < checkboxes.length; x++) {
-		if(checkboxes[x].checked) {
+		if(checkboxes[x].checked && !prevcheckboxes[x]) {
 			select(x);
 			num++;
 			prevcheckboxes[x] = true;
