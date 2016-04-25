@@ -12,7 +12,7 @@ window.onload = function getRoom() {
 			console.log("Data: " + data + "\n");
 			var room = parseInt(data.substring(1), 10);
 			console.log("Room: " + room + "\n");
-			sessionStorage.gameNum = room;
+			sessionStorage.setItem("gameNum", room);
 			console.log("GameNum: " + sessionStorage.gameNum + "\n");
 		});
 	}
