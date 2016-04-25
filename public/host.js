@@ -13,10 +13,12 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 //get room number
 window.onload = function getRoom() {
 	
-	sessionStorage.roomNum = $.get("/host");	
-	var roomNumThing = document.getElementById('RoomNumHeader');
-	roomNumThing.innerHTML = "Game: " + sessionStorage.roomNum;
-	
+	$.get("/host", function(data) {	
+		var roomNumThing = document.getElementById('RoomNumHeader');
+		roomNumThing.innerHTML = "Game: " + data;
+		sessionStorage.roomNum = data;
+	});
+
 	
 	var roundCircles = [];
 	roundCircles.add(document.getElementById('round1Cir'));
