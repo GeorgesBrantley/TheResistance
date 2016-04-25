@@ -33,11 +33,11 @@ function getList() {
 		}
 	}
 	
-	for(var x = 0; x < checkboxes.length; x++) {
+/*	for(var x = 0; x < checkboxes.length; x++) {
 		checkboxes[x].onclick = function() {
 			select(x);
 		};
-	}
+	}*/
 }
 
 function buildTable() {
@@ -52,10 +52,10 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-/*		  checkBox.onclick = function() {
+		  checkBox.onchange = function() {
 		  	select(x);
 		  };
-*/		  checkboxes.push(checkBox);
+		  checkboxes.push(checkBox);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
