@@ -21,9 +21,9 @@ function getList() {
 
 	//create selectable list
 	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
-	xmlhttp2.open("GET", "/" + roomNum + "/getPlayers");
+	xmlhttp2.open("GET", "/" + roomNum + "/getLeaderList");
 	xmlhttp2.send(null);
-	console.log("/getPlayers: " + xmlhttp2.responseText);
+	console.log("/getLeaderList: " + xmlhttp2.responseText);
 	players = xmlhttp2.responseText;
 
 
