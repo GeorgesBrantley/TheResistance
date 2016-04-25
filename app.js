@@ -390,7 +390,11 @@ app.get('/:id/whoMission', function (req, res) {
 });
 app.get('/:id/totalSelected', function(req, res) {
 		var id = req.params.id;
-		res.send(games[id].chosen + '/' +games[id].maxChosen[games[id].round - 1] + '\n');
+		if (id <= gameRoom) {
+			var s = games[id].chosen + '/' +games[id].maxChosen[games[id].round - 1] + '\n';
+			res.send(s);
+	} else
+		res.send('Error');
 });
 
 //Mission Voting
@@ -432,11 +436,11 @@ app.post('/:id/vote', function (req, res) {
 app.get('/:id/getLeaderList', function(req, res) {
 	var id = req.params.id;
 	var List = [];
-	
-	for(var x = 0; x < games[id].playersNum; ++x) {
-		List.push(games[id].Players[games[id].Leaders[x]]);
+	if (id <= gameRoom) {
+		for(var x = 0; x < games[id].playersNum; ++x) {
+				List.push(games[id].Players[games[id].Leaders[x]]);
+		}
 	}
-	
 	res.send(List);
 });
 //Make New Team Leader
@@ -460,8 +464,13 @@ app.get('/:id/nextLeader', function(req, res) {
 });
 app.get('/:id/getLeader', function(req, res) {
 	var id = req.params.id;
-	console.log("Server-Leaders: " + games[id].Players[games[id].Leaders[0]]);
-	res.send(games[id].Players[games[id].Leaders[0]]);
+	if (id <= gameRoom) {
+		console.log("Server-Leaders: " + games[id].Players[games[id].Leaders[0]]);
+		res.send(games[id].Players[games[id].Leaders[0]]);
+	} else {
+		res.send('Error');
+	}
+
 });
 
 
