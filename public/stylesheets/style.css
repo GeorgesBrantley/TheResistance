@@ -106,6 +106,7 @@ pre {
 
 .centeronImage {
 	position: absolute;
+	margin: auto;
 	top:-75px;
 }
 
