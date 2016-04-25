@@ -99,7 +99,6 @@ pre {
 }
 
 .centered {
-	height: 150px;
 	position: fixed;
 	left: 50%;
 	transform: translate(-50%, 0);
