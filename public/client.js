@@ -13,26 +13,30 @@ function getList() {
 	
 	*/
 	$.get( "/" + roomNum + "/getLeader", function( data ) {
-		console.log("client-data: " + data);
-		console.log("client-data: " + data.toString());
 		var str = "Current leader is " + data.name;
 		document.getElementById("leader").innerHTML = str;
 	});
 	
 
 	//create selectable list
-	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
+/*	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp2.open("GET", "/" + roomNum + "/getPlayers");
 	xmlhttp2.send(null);
 	console.log("/getPlayers: " + xmlhttp2.responseText);
 	var players = xmlhttp2.responseText;
-	
-	console.log("Size of players: " + players.length);
-	for(var x = 0; x < players.length; x++) {
-		var option = document.createElement("option");
-		option.value = x;
-		option.innerHTML = players[x].name;
+*/
+
+	$.get( "/" + roomNum + "/getPlayers", function( data ) {
+		console.log("Size of players: " + data.length);
+		for(var x = 0; x < data.length; x++) {
+			console.log("data[x].name = " + data[x].name);
+			var option = document.createElement("option");
+			option.value = x;
+			option.innerHTML = data[x].name;
 		
-		document.getElementById("playerList").appendChild(option);
-	}
+			document.getElementById("playerList").appendChild(option);
+		}
+	});
+	
+	
 }
