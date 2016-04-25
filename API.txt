@@ -132,7 +132,6 @@ GETS /host
 GETS /:id/getHost, (keeps calling this to update)
 - returns all relevant information that needs to be displayed
 BONUS: GET /:id/whoMission (who is on the Mission)
-		GET /:id/getLeaderList (list of Leader seccesion in order)
 
 
 WIN CONDITION:
@@ -175,6 +174,7 @@ POST /:id/vote
 
 = 'Vote Fails!\n' GET /:id/nextLeader, redirect back to MISSION CHOICE
 = 'Vote Passes!\n' GO TO MISSION CONTROL
+
 MISSION CONTROL
 GET /:id/whoMission for everyone on mission
 GET /:id/DoubleJ, returns 1 if you need 2 fails

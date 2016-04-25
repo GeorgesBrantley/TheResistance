@@ -36,10 +36,18 @@ app.listen(appEnv.port, '0.0.0.0', function() {
 
 //TWILIO
 var twilioSid, twilioToken;
+/* UN COMMENT FOR REAL
+twilioSid = 'AC381a729ec42aca8502006c902713e480';
+twilioToken = '2de3f800821dcc635a2563472fc840f7';
+*/
+//NOTHING
+twilioSid = 'AC51499ee21f97088d905d385e9096c686';
+twilioToken = 'a5ebc151376ec3f15ea2810fc15ffb32';
+
+var	twilioNUM = '+13175486514';
+	
 app.get('/txt', function (req, res) {
    var client = new twilio.RestClient(twilioSid, twilioToken);
-   	twilioSid = 'AC51499ee21f97088d905d385e9096c686';
-	twilioToken = 'a5ebc151376ec3f15ea2810fc15ffb32';
   	var tonum ='+13174323028';
   	var fromnum = '+13175486514';
   	var message = 'dfsdfsds';
@@ -130,7 +138,7 @@ app.post('/join', function (req, res) {
 		//MAKE TEAM LEADER:
 		games[roomNumber].Players[games[roomNumber].Leaders[0]].teamLeader = 1;
 		
-		
+		var namesOfSpies = ' ';
 		//SET SPIES, SET ROUNDS
 		if (S === 5 || S === 6) {
 			games[roomNumber].numberOfSpies = 2;	
@@ -147,6 +155,7 @@ app.post('/join', function (req, res) {
 				} while (spy2 === spy1);
 				games[roomNumber].Players[spy1].side = 1;
 				games[roomNumber].Players[spy2].side = 1;
+				namesOfSpies = games[roomNumber].Players[spy1].name + ' ' + games[roomNumber].Players[spy2].name +'\n';
 		} else if (S === 7 || S === 8 || S === 9) {
 			games[roomNumber].numberOfSpies = 3;	
 			//SET ROUNDS
@@ -166,6 +175,7 @@ app.post('/join', function (req, res) {
 				games[roomNumber].Players[spy1].side = 1;
 				games[roomNumber].Players[spy2].side = 1;
 				games[roomNumber].Players[spy3].side = 1;
+				namesOfSpies = games[roomNumber].Players[spy1].name + ' ' + games[roomNumber].Players[spy2].name + ' ' + games[roomNumber].Players[spy3].name  +'\n';
 		} else if (S === 10) {
 			games[roomNumber].numberOfSpies = 4;		
 			games[roomNumber].maxChosen = [3,4,4,5,5];
@@ -180,7 +190,38 @@ app.post('/join', function (req, res) {
 					games[roomNumber].Players[spy2].side = 1;
 					games[roomNumber].Players[spy3].side = 1;
 					games[roomNumber].Players[spy4].side = 1;
+					namesOfSpies = games[roomNumber].Players[spy1].name + ' ' + games[roomNumber].Players[spy2].name + ' ' + games[roomNumber].Players[spy3].name  + ' ' + games[roomNumber].Players[spy4].name +'\n';
 		} 
+		
+		//SEND TEXTS
+		var peps = games[roomNumber].Players;
+		for (var x = 0; x < S; ++x){
+			var person = peps[x];
+			var MM = ' ';
+			if (peps[x].phone.length > 9) {
+			//getMessage
+			if (person.side === 0) {
+				//if person is resistance
+				MM = 'You are Resistance';
+			} else {
+				//if person is spy
+				MM = 'You are a Spy\nThese are Your fellow Spies: ' + namesOfSpies;
+			}
+			var tonum = '+1'+person.phone;
+			var sender = new twilio.RestClient(twilioSid, twilioToken);
+			
+			sender.sendMessage(
+				{
+					to:tonum,
+					from:twilioNUM,
+					body:MM
+				}, function(err, message) {
+				});
+			}
+
+		}
+		
+		//FINAL
 		if (games[roomNumber].numberOfSpies < 2)
 			res.send('Joining ERROR');
 		else {
@@ -210,12 +251,12 @@ app.get('/:id/getHost', function (req, res) {
 			'Spy Wins: ' + games[Id].spyWins + '\n\n' +
 			'Round Order: ' + games[Id].maxChosen + '\n\n' +
 			'Current Round: ' + games[Id].round + '\n\n' + 
-			'Players: ' + List + '\n\n'+
-			'Players Chosen/Max able to Choose: ' + games[Id].chosen + '/' +games[Id].maxChosen[games[Id].round] + '\n\n'
+			'Players: ' + JSON.stringify(List) + '\n\n'+
+			'Players Chosen/Max able to Choose: ' + games[Id].chosen + '/' +games[Id].maxChosen[games[Id].round-1] + '\n\n'
 			+'Chosen Players: ' + games[Id].Mission + '\n' + 
 			'Team Leader: ' + JSON.stringify(games[Id].Players[games[Id].Leaders[0]]) + '\n\n'+
 			'Failed Votes: ' + games[Id].voteFails + '\n\n' +
-			'Double Jepardy' + doubleJepardy + '\n\n');
+			'Double Jepardy Right Now: ' + doubleJepardy + '\n\n');
 			
 			//Need to reset Players Chosen and Chosen Players every round
 });
@@ -315,7 +356,7 @@ app.post('/:id/select', function (req, res) {
 			if (name === games[roomId].Players[x].name) {
 					if (games[roomId].Players[x].mission === 0) {
 						//put on mission
-						if (games[roomId].chosen < games[roomId].maxChosen[games[roomId].round]) {
+						if (games[roomId].chosen < games[roomId].maxChosen[games[roomId].round - 1]) {
 							games[roomId].Players[x].mission = 1;
 							res.send(name + ' has been Chosen!\n');
 							games[roomId].chosen++;
@@ -348,7 +389,7 @@ app.get('/:id/whoMission', function (req, res) {
 });
 app.get('/:id/totalSelected', function(req, res) {
 		var id = req.params.id;
-		res.send('Players Chosen/Max able to Choose: ' + games[id].chosen + '/' +games[id].maxChosen[games[id].round] + '\n');
+		res.send('Players Chosen/Max able to Choose: ' + games[id].chosen + '/' +games[id].maxChosen[games[id].round - 1] + '\n');
 });
 
 //Mission Voting
