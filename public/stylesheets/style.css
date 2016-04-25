@@ -111,7 +111,9 @@ pre {
 	font-size: 200%;
 	transform: translate(0, -34%);
 }
-
+.clientButtons {
+	text-align: center;
+}
 
 
 
