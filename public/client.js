@@ -72,10 +72,11 @@ function buildTable() {
 	}
 	 var ftr = document.createElement('tr'); 
   	 var ftd = document.createElement('td');
-  	 var fbutton = document.createElement('button');
+  	 var fbutton = document.createElement('input');
   	 fbutton.value="Vote on mission";
+  	 fbutton.type="button";
   	 fbutton.innerHTML="Vote on mission";
-  	 fbutton.onclick=vote();
+  	// fbutton.setAttribute("onclick", function() { alert("blabla"); });
   	 ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
@@ -86,9 +87,6 @@ function buildTable() {
 	document.body.appendChild(table);
 }
 
-function vote() {
-	window.location.href="vote.html";
-}
 function select(value) {
 	var selected = value.name;
 	//send update to server
