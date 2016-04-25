@@ -391,7 +391,7 @@ app.get('/:id/whoMission', function (req, res) {
 });
 app.get('/:id/totalSelected', function(req, res) {
 		var id = req.params.id;
-		res.send('Players Chosen/Max able to Choose: ' + games[id].chosen + '/' +games[id].maxChosen[games[id].round - 1] + '\n');
+		res.send(games[id].chosen + '/' +games[id].maxChosen[games[id].round - 1] + '\n');
 });
 
 //Mission Voting
