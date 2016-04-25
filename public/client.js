@@ -37,7 +37,7 @@ function getList() {
 			console.log("xhr.responseText: " + xhr.responseText);
 			var response = JSON.parse(xhr.responseText);
 			console.log("response: " + response); 
-			players = xhr.response;
+			players = JSON.parse(xhr.response);
 			console.log(players[0].name);
 		}
 
