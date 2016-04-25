@@ -25,7 +25,6 @@ function voteFail() {
 	$.get( address, function() {
 	});
 
-	//go back to mission select
-	window.location.href = "client.html";
+
 }
 	
