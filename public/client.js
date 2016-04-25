@@ -34,11 +34,10 @@ function getList() {
 	xhr.onreadystatechange = processRequest;
 	function processRequest(data) {
 		if(xhr.readyState === 4 && xhr.status === 200) {
-			console.log("here");
 			console.log("xhr.responseText: " + xhr.responseText);
 			var response = JSON.parse(xhr.responseText);
 			console.log("response: " + response); 
-			players = xhr.responseText;
+			players = xhr.response;
 			console.log(players[0].name);
 		}
 
