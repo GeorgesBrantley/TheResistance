@@ -50,11 +50,14 @@ window.onload = function getRoom() {
 		numberTexts[i].innerHTML = roundNumbers[numPlayers-5][i];
 	}
 	
-	roundCircles.push(document.getElementById('round1Cir'));
-	roundCircles.push(document.getElementById('round2Cir'));
-	roundCircles.push(document.getElementById('round3Cir'));
-	roundCircles.push(document.getElementById('round4Cir'));
-	roundCircles.push(document.getElementById('round5Cir'));
+	$(document).ready(function() {
+		roundCircles.push(document.getElementById('round1Cir'));
+		roundCircles.push(document.getElementById('round2Cir'));
+		roundCircles.push(document.getElementById('round3Cir'));
+		roundCircles.push(document.getElementById('round4Cir'));
+		roundCircles.push(document.getElementById('round5Cir'));
+	});
+
 	
 	pull();
 };
