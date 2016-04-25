@@ -24,7 +24,7 @@ function getList() {
 	xmlhttp2.open("GET", "/" + roomNum + "/getLeaderList");
 	xmlhttp2.send(null);
 	console.log("/getLeaderList: " + xmlhttp2.responseText);
-	players = xmlhttp2.responseText;
+	players = JSON.parse(xmlhttp2.responseText);
 
 
 /*	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
