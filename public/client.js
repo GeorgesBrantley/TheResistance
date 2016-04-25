@@ -1,6 +1,7 @@
 /*eslint-env browser, jquery*/
 var roomNum = sessionStorage.getItem("roomNum");
 var players;
+var numSelected = 0;
 
 console.log(roomNum);
 function getList() {
@@ -44,7 +45,7 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-		  checkBox.onclick=select(checkBox.value);
+		  checkBox.onchange=select(checkBox.value);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
@@ -80,6 +81,8 @@ function select(value) {
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xmlhttp.send(JSON.stringify(selected));
 	console.log("Post response: " + xmlhttp.responseText);
+	
+	
 	
 	//test who is on the mission
 	$.get( "/" + roomNum + "/whoMission", function( data ) {
