@@ -64,7 +64,10 @@ function buildTable() {
 	table.style.textAlign="left";
 	document.body.appendChild(table);
 	
-	prevcheckboxes = checkboxes;
+	for(var i = 0; i < checkboxes.length; i++) {
+		prevcheckboxes[i].value = checkboxes[i].checked;
+	}
+	
 }
 
 function check() {
@@ -73,16 +76,16 @@ function check() {
 		if(checkboxes[x].checked) {
 			select(x);
 			num++;
+			prevcheckboxes[x].value = true;
 			if(num > maxPlayers) {
 				break;
 			}
-		} else if(checkboxes[x].checked === false && prevcheckboxes[x].checked) {
+		} else if(!checkboxes[x].checked && prevcheckboxes[x].value) {
 			select(x);
 			num--;
+			prevcheckboxes[x].value = false;
 		}
 	}
-	
-	prevcheckboxes = checkboxes;
 }
 
 function select(value) {
