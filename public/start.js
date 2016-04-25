@@ -1,27 +1,64 @@
 
 /*eslint-env browser, jquery*/
 console.log("running js");
-//var url = "resistancegame.mybluemix.net";
+var url = "resistancegame.mybluemix.net";
 
-function askServer() {
-	return $.get("/" + sessionStorage.roomNum + "/getLeaderList").length;
+var roundNumbers = [[2, 3, 2, 3, 3],
+					[2, 3, 4, 3, 4],
+					[2, 3, 3, 4, 4], 
+					[3, 4, 4, 5, 5], 
+					[3, 4, 4, 5, 5],
+					[3, 4, 4, 5, 5]];
+
+function askServer(data) {
+	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
+		if (data.length === 0) {
+			return false;
+		} 
+		return true;
+	});
 }
 
 //get room number
-window.onload = function getData() {
-
-	$.get( "/host", function( data ) {
-	document.getElementById("RoomNum").innerHTML = data;
-	sessionStorage.roomNum = data;
-	});
+window.onload = function getRoom() {
 	
-	var dataLength = askServer();
-	console.log("dataLength=" + dataLength + "OUTSIDE");
-	while (dataLength === 0) {
-		console.log("dataLength=" + dataLength + "INSIDE");
-		dataLength = setTimeout(askServer, 1000);
+	if (sessionStorage.getItem('gameNum') === null) {
+		$.get("/host", function(data) {
+			var room = parseInt(data.substring(1), 10);
+			sessionStorage.gameNum = room;
+		});
 	}
-	window.location.href = "/host.html";
+
+	var roomNumThing = document.getElementById('RoomNumHeader');
+	roomNumThing.innerHTML = "Game: ";
+	roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
+			
+
+	
+	var roundCircles = [];
+	roundCircles.push(document.getElementById('round1Cir'));
+	roundCircles.push(document.getElementById('round2Cir'));
+	roundCircles.push(document.getElementById('round3Cir'));
+	roundCircles.push(document.getElementById('round4Cir'));
+	roundCircles.push(document.getElementById('round5Cir'));
+	
+	var numberTexts = [];
+	numberTexts.push(document.getElementById('round1Num'));
+	numberTexts.push(document.getElementById('round2Num'));
+	numberTexts.push(document.getElementById('round3Num'));
+	numberTexts.push(document.getElementById('round4Num'));
+	numberTexts.push(document.getElementById('round5Num'));		
+	
+	while (!askServer) {
+		console.log("in while loop");
+		continue;
+	}
+	
+	var numPlayers = sessionStorage.numPlayers;
+		
+	for(i = 0; i < numberTexts.length; i++) {
+		numberTexts[i].innerHTML = roundNumbers[numPlayers-5][i];
+	}
 };
 
 
