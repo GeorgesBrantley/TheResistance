@@ -16,14 +16,20 @@ window.onload = function getRoom() {
 			sessionStorage.setItem("gameNum", room);
 			gameNumLocal = room;
 			console.log("GameNum: " + sessionStorage.gameNum + "\n");
+			var roomNumThing = document.getElementById('RoomNumHeader');
+			roomNumThing.innerHTML = "Game: ";
+			console.log(sessionStorage.gameNum);
+			//while(sessionStorage.gameNum === null) continue;
+			roomNumThing.innerHTML = roomNumThing.innerHTML + gameNumLocal;
 		});
+	} else {
+		var roomNumThing = document.getElementById('RoomNumHeader');
+		roomNumThing.innerHTML = "Game: ";
+		console.log(sessionStorage.gameNum);
+		//while(sessionStorage.gameNum === null) continue;
+		roomNumThing.innerHTML = roomNumThing.innerHTML + gameNumLocal;
+		
 	}
-
-	var roomNumThing = document.getElementById('RoomNumHeader');
-	roomNumThing.innerHTML = "Game: ";
-	console.log(sessionStorage.gameNum);
-	//while(sessionStorage.gameNum === null) continue;
-	roomNumThing.innerHTML = roomNumThing.innerHTML + gameNumLocal;
 			
 	
 };
