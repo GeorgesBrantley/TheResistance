@@ -100,8 +100,8 @@ function Game(gamecode) {
 app.get('/host', function (req, res) {
         var a = new Game(gameRoom);
 		games[gameRoom] = a;
-		res.send(gameRoom);
 		gameRoom++;
+		res.send(gameRoom-1);
 });
 //Add players to game, after game has been made
 //Make them spies
