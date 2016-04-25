@@ -38,7 +38,7 @@ function getList() {
 		console.log("data[x].name = " + players[x].name);
 		var row = table.insertRow(x);
 		var cell1 = row.insertCell(0);
-		cell1.innerHTML = document.createElement("P").innerHTML = players.name[x];
+		cell1.innerHTML = players.name[x];
 	}
 	
 }
