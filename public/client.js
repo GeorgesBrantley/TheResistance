@@ -38,16 +38,16 @@ function getList() {
 			console.log("xhr.responseText: " + xhr.responseText);
 			var response = JSON.parse(xhr.responseText);
 			console.log("response: " + response); 
-			players = response;
+			players = xhr.responseText;
 		}
 
 	}
 
-	var table = document.createElement('table');
+	var table = document.createElement("table");
 	console.log("Size of players: " + players.length);
 	for(var x = 0; x < players.length; x++) {
-		  var tr = document.createElement('tr'); 
-  		  var td = document.createElement('td');
+		  var tr = document.createElement("tr"); 
+  		  var td = document.createElement("td");
    		  var text = document.createTextNode(players[x].name);
 
 		  td.appendChild(text);
