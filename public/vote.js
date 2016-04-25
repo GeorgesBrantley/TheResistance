@@ -18,6 +18,8 @@ function voteFail() {
 	if (xmlhttp.responseText === 'SPIES WIN GAME') {
 		//spys ahve won!
 		console.log('SPYS WIN!');
+		window.location.href = "SpyWin.html";
+		return;
 	}
 	
 	//move team leader
