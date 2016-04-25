@@ -20,17 +20,17 @@ function getList() {
 	
 
 	//create selectable list
-	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
+/*	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp2.open("GET", "/" + roomNum + "/getLeaderList");
 	xmlhttp2.send(null);
 	console.log("/getLeaderList: " + JSON.parse(xmlhttp2.responseText));
 	players = JSON.parse(xmlhttp2.responseText);
-
-
-/*	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
-		players = data;
-	});
 */
+
+	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
+		players = JSON.parse(data);
+	});
+
 
 	var table = document.createElement('table');
 	console.log("Size of players: " + players.length);
