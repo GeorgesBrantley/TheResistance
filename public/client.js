@@ -5,14 +5,21 @@ console.log(roomNum);
 function getList() {
 	
 	//denote current leader
-	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+/*	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("GET", "/" + roomNum + "/getLeader", true);
 	xmlhttp.send(null);
 	console.log("/getLeader: " + xmlhttp.responseText.name);
 	leader = xmlhttp.responseText.name;
-	var str = "Current leader is " + leader;
-	document.getElementById("leader").innerHTML = str;
 	
+	*/
+	$.get( "/" + roomNum + "/getLeader", function( data ) {
+		console.log("client-data: " + data);
+		console.log("client-data: " + data.toString());
+		var str = "Current leader is " + data.name;
+		document.getElementById("leader").innerHTML = str;
+	});
+	
+
 	//create selectable list
 	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp2.open("GET", "/" + roomNum + "/getPlayers");

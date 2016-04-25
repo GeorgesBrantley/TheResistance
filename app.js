@@ -407,6 +407,7 @@ app.get('/:id/nextLeader', function(req, res) {
 });
 app.get('/:id/getLeader', function(req, res) {
 	var id = req.params.id;
+	console.log("Server-Leaders: " + games[id].Players[games[id].Leaders[0]]);
 	res.send(games[id].Players[games[id].Leaders[0]]);
 });
 
