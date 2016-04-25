@@ -23,7 +23,7 @@ function getList() {
 	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp2.open("GET", "/" + roomNum + "/getLeaderList");
 	xmlhttp2.send(null);
-	console.log("/getLeaderList: " + xmlhttp2.responseText);
+	console.log("/getLeaderList: " + JSON.parse(xmlhttp2.responseText));
 	players = JSON.parse(xmlhttp2.responseText);
 
 
