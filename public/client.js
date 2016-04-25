@@ -46,9 +46,9 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-		  checkBox.addEventListener('click',function() {
-		  	select(x);
-		  });
+	//	  checkBox.addEventListener('click',function() {
+	//	  	select(x);
+	//	  });
 		  checkboxes.push(checkBox);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
@@ -61,19 +61,34 @@ function buildTable() {
 	}
 	 var ftr = document.createElement('tr'); 
   	 var ftd = document.createElement('td');
-  	 var fbutton = document.createElement('input');
+  	 var otd = document.createElement('td');
+  	 var obutton = document.createElement('input');
+  	var fbutton = document.createElement('input');
   	 fbutton.value="Vote on mission";
   	 fbutton.type="button";
   	 fbutton.innerHTML="Vote on mission";
-  		fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
-  	 ftd.appendChild(fbutton);
+  	 obutton.type="button";
+  	 obutton.innerHTML="Update Screen";
+  	 obutton.onclick=checkboxes();
+  	fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
+  	ftd.appendChild(fbutton);
+  	otd.appendChild(obutton);
   	ftr.appendChild(ftd);
+  	ftr.appendChild(otd);
 	table.appendChild(ftr);
 	
 	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
 	document.body.appendChild(table);
+}
+
+function checkboxes() {
+	for(var x = 0; x < checkboxes.length; x++) {
+		if(checkboxes[x].checked) {
+			select(x);
+		}
+	}
 }
 
 function select(value) {
