@@ -26,6 +26,8 @@ function voteFail() {
 	address = '/' +id + '/nextLeader';
 	$.get( address, function() {
 	});
-
+	
+	
+	window.location.href = "client.html";
 }
 	

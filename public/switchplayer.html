@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Resistance</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+   <script src="vote.js"></script>
+    <script language="javascript" type="text/javascript">	
+		/*eslint-env browser, jquery*/
+		function getNextPlayer() {
+			var roomNum = sessionStorage.getItem("roomNum");
+    		$.get( "/" + roomNum + "/whoMission", function( data ) {
+				var str = "Pass the phone to " + data.name;
+				document.getElementById("par").innerHTML = str;
+			});
+    	}
+    	function switchPageMission() {
+    		window.location.href="mission.html";
+    	}
+    </script>
+  </head>
+
+  <body onload="getNextPlayer()">
+    <table>
+      <tr>
+            <h2 id="par"></h2>
+            <div name="buttons">
+            	<button type="button" id="next" onclick="switchPageMission()">I certify that I am in fact this person</button>
+            </div>
+       </tr>
+    </table>
+  </body>
+</html>

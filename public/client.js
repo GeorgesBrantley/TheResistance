@@ -1,6 +1,7 @@
 /*eslint-env browser, jquery*/
 var roomNum = sessionStorage.getItem("roomNum");
 var players;
+var maxPlayers;
 var checkboxes = [];
 
 console.log(roomNum);
@@ -15,6 +16,7 @@ function getList() {
 	//show # players to select
 	$.get( "/" + roomNum + "/totalSelected", function( data ) {
 		var str = "Select " + data.charAt(2) + " players to go on the mission.";
+		maxPlayers = data.charAt(2);
 		document.getElementById("description").innerHTML = str;
 	});
 	
@@ -45,9 +47,6 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-	//	  checkBox.addEventListener('click',function() {
-	//	  	select(x);
-	//	  });
 		  checkboxes.push(checkBox);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
@@ -58,26 +57,22 @@ function buildTable() {
 		  tr.appendChild(td);
 		  table.appendChild(tr);
 	}
-/*	var ftr = document.createElement('tr'); 
-  	var ftd = document.createElement('td');
-  	var fbutton = document.createElement('input');
-  	fbutton.value="Vote on mission";
-  	fbutton.type="button";
-  	fbutton.innerHTML="Vote on mission";
-  	ftd.appendChild(fbutton);
-  	ftr.appendChild(ftd);
-	table.appendChild(ftr);
-*/	table.style.border="2px solid white";
+
+	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
-	//document.getElementById("t").appendChild(table);
 	document.body.appendChild(table);
 }
 
 function check() {
+	var num = 0;
 	for(var x = 0; x < checkboxes.length; x++) {
 		if(checkboxes[x].checked) {
 			select(x);
+			num++;
+			if(num > maxPlayers) {
+				break;
+			}
 		}
 	}
 }
