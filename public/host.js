@@ -71,25 +71,25 @@ function pull() {
 		$.get('/' + roomid + '/getLeaderList', function(data) {
 			console.log(JSON.stringify(data));
 			}, false);
-    }, 5000); // repeat forever, polling every 3 seconds
-	
-	var thisRound = parseInt(currentRoundInfo.indexof("Current Round: "), 10);
-	var spyWins = parseInt(currentRoundInfo.indexof("Spy Wins: "), 10);
-	var resWins = parseInt(currentRoundInfo.indexof("Resistance Wins: "), 10);
-	console.log("thisRound= " + thisRound
-				+ "\nspyWins= " + spyWins
-				+ "\nresWins= " + resWins);
-	if (thisRound > currentRound) {
-		if (spyWins > currSpyWins) {
-			roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
-			currSpyWins = spyWins;
-		} else {
-			roundCircles[currentRound].setAttribute('src', 'images/redCircle.png');
-			currResWins = resWins;
+			
+		var thisRound = parseInt(currentRoundInfo.indexof("Current Round: "), 10);
+		var spyWins = parseInt(currentRoundInfo.indexof("Spy Wins: "), 10);
+		var resWins = parseInt(currentRoundInfo.indexof("Resistance Wins: "), 10);
+		console.log("thisRound= " + thisRound
+					+ "\nspyWins= " + spyWins
+					+ "\nresWins= " + resWins + "\n");
+		if (thisRound > currentRound) {
+			if (spyWins > currSpyWins) {
+				roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
+				currSpyWins = spyWins;
+			} else {
+				roundCircles[currentRound].setAttribute('src', 'images/redCircle.png');
+				currResWins = resWins;
+			}
+			currentRound = thisRound;
+			roundCircles[currentRound].setAttribute('src', 'images/greenCircle.png');
 		}
-		currentRound = thisRound;
-		roundCircles[currentRound].setAttribute('src', 'images/greenCircle.png');
-	}
+	}, 5000); // repeat forever, polling every 3 seconds
 }
 
 
