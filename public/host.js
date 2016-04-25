@@ -10,14 +10,14 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 					[3, 4, 4, 5, 5],
 					[3, 4, 4, 5, 5]];
 
-function askServer() {
+/*function askServer() {
 	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
 		if (data.length === 0) {
 			return false;
 		} 
 		return true;
 	});
-}
+}*/
 
 //get room number
 window.onload = function getRoom() {
@@ -48,11 +48,6 @@ window.onload = function getRoom() {
 	numberTexts.push(document.getElementById('round3Num'));
 	numberTexts.push(document.getElementById('round4Num'));
 	numberTexts.push(document.getElementById('round5Num'));		
-	
-	while (!askServer()) {
-		console.log("in while loop");
-		continue;
-	}
 	
 	var numPlayers = sessionStorage.numPlayers;
 		
