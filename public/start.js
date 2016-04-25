@@ -7,7 +7,9 @@ window.onload = function getRoom() {
 	
 	if (sessionStorage.getItem('gameNum') === null) {
 		$.get("/host", function(data) {
+			console.log("Data: " + data);
 			var room = parseInt(data.substring(1), 10);
+			console.log("Room: " + room);
 			sessionStorage.gameNum = room;
 			console.log("GameNum: " + sessionStorage.gameNum);
 		});
@@ -23,6 +25,6 @@ window.onload = function getRoom() {
 function gotoHost() {
 	$.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
 		sessionStorage.numPlayers = data.length;
-		window.location.href="host.html";
+		if (data.length > 0) window.location.href="host.html";
 	});
 }
