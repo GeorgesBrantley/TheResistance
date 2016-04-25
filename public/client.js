@@ -32,12 +32,6 @@ function getList() {
 			buildTable();
 		}
 	}
-	
-/*	for(var x = 0; x < checkboxes.length; x++) {
-		checkboxes[x].onclick = function() {
-			select(x);
-		};
-	}*/
 }
 
 function buildTable() {
@@ -52,9 +46,9 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-		  checkBox.onchange = function() {
+		  checkBox.addEventListener('click',function() {
 		  	select(x);
-		  };
+		  });
 		  checkboxes.push(checkBox);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
