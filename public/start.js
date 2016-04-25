@@ -11,7 +11,7 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 					[3, 4, 4, 5, 5]];
 
 function askServer(data) {
-	return $.get("/" + gameNum + "/getLeaderList", function(data) {
+	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
 		if (data.length === 0) {
 			return false;
 		} 
