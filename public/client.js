@@ -1,6 +1,7 @@
 /*eslint-env browser, jquery*/
 var roomNum = sessionStorage.getItem("roomNum");
-var leader;
+var players;
+
 console.log(roomNum);
 function getList() {
 	
@@ -26,17 +27,26 @@ function getList() {
 	var players = xmlhttp2.responseText;
 */
 
-	$.get( "/" + roomNum + "/getPlayers", function( data ) {
-		console.log("Size of players: " + data.length);
-		for(var x = 0; x < data.length; x++) {
-			console.log("data[x].name = " + data[x].name);
-			var option = document.createElement("option");
-			option.value = x;
-			option.innerHTML = data[x].name;
-		
-			document.getElementById("playerList").appendChild(option);
+
+	getPlayers();
+	var table = document.getElementById("playerList");
+
+	
+	console.log("Size of players: " + players.length);
+	for(var x = 0; x < players.length; x++) {
+		console.log("data[x].name = " + players[x].name);
+		var row = table.insertRow(x);
+		var cell1 = row.insertCell(0);
+		cell1.innerHTML = players.name[x];
+	}
+}
+
+function getPlayers() {
+	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
+		if(data === "" || data === null) {
+			getPlayers();
 		}
+		console.log("data: " + data);
+		players = data;
 	});
-	
-	
 }
