@@ -105,9 +105,11 @@ pre {
 }
 
 .centeronImage {
-	position: absolute;
+	position: relative;
 	margin: auto;
-	top:-75px;
+	top:-90px;
+	font-size: 200%;
+	transform: translate(0, -34%);
 }
 
 
