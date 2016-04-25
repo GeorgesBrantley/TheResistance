@@ -57,6 +57,31 @@ window.onload = function getRoom() {
 	}
 };
 
+$.ajaxSetup ({
+	cache: false
+});
+
+var ajax_load = "<img src='images/load.gif alt='loading...' />";
+
+var loadUrl = "ajax/load.php";
+$('#roomNumThing').click(function() {
+	$('result').html(ajax_load).load(loadUrl);
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 //get initial game info
 
