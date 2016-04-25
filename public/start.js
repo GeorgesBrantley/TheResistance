@@ -5,6 +5,8 @@ console.log("running js");
 
 window.onload = function getRoom() {
 	
+	console.log("GameNum Before: " + sessionStorage.getItem('gameNum'));
+	
 	if (sessionStorage.getItem('gameNum') === null) {
 		$.get("/host", function(data) {
 			console.log("Data: " + data + "\n");
@@ -17,6 +19,7 @@ window.onload = function getRoom() {
 
 	var roomNumThing = document.getElementById('RoomNumHeader');
 	roomNumThing.innerHTML = "Game: ";
+	console.log(sessionStorage.gameNum);
 	roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
 			
 	
