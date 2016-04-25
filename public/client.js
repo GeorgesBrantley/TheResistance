@@ -4,28 +4,12 @@ var players;
 
 console.log(roomNum);
 function getList() {
-	
-	//denote current leader
-/*	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
-	xmlhttp.open("GET", "/" + roomNum + "/getLeader", true);
-	xmlhttp.send(null);
-	console.log("/getLeader: " + xmlhttp.responseText.name);
-	leader = xmlhttp.responseText.name;
-	
-	*/
+
 	$.get( "/" + roomNum + "/getLeader", function( data ) {
 		var str = "Current leader is " + data.name;
 		document.getElementById("leader").innerHTML = str;
 	});
-	
 
-	//create selectable list
-/*	var xmlhttp2 = new XMLHttpRequest();   // new HttpRequest instance 
-	xmlhttp2.open("GET", "/" + roomNum + "/getLeaderList");
-	xmlhttp2.send(null);
-	console.log("/getLeaderList: " + JSON.parse(xmlhttp2.responseText));
-	players = JSON.parse(xmlhttp2.responseText);
-*/
 	
 	//show # players to select
 	$.get( "/" + roomNum + "/totalSelected", function( data ) {
@@ -88,7 +72,8 @@ function buildTable() {
 }
 
 function select(value) {
-	var selected = value.name;
+	var selected = {name:value.name};
+	console.log("selected: " + selected);
 	//send update to server
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("POST", "/" + roomNum + "/select");
@@ -101,15 +86,3 @@ function select(value) {
 		console.log("whoMission: " + data);
 	});
 }
-
-/*
-function getPlayers() {
-	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
-		if(data === "" || data === null) {
-			getPlayers();
-		}
-		console.log("data: " + data);
-		players = data;
-	});
-}
-*/
