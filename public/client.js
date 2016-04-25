@@ -35,7 +35,9 @@ function getList() {
 	function processRequest(data) {
 		if(xhr.readyState === 4 && xhr.status === 200) {
 			console.log("here");
+			console.log("xhr.responseText: " + xhr.responseText);
 			var response = JSON.parse(xhr.responseText);
+			console.log("response: " + response); 
 			players = response;
 		}
 
