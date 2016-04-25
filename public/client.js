@@ -48,8 +48,11 @@ function buildTable() {
 		  var tr = document.createElement('tr'); 
   		  var td = document.createElement('td');
    		  var text = document.createTextNode(players[x].name);
-
-		  td.appendChild(text);
+   		  
+		  var checkBox = document.createElement('input');
+		  checkBox.type = "checkbox";
+		  checkBox.value = text;
+		  td.appendChild(checkBox);
 		  tr.appendChild(td);
 		  table.appendChild(tr);
 	}
