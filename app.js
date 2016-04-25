@@ -100,6 +100,12 @@ function Game(gamecode) {
 app.get('/host', function (req, res) {
         var a = new Game(gameRoom);
 		games[gameRoom] = a;
+		res.send('#'+ gameRoom);
+		gameRoom++;
+});
+app.get('/host', function (req, res) {
+        var a = new Game(gameRoom);
+		games[gameRoom] = a;
 		res.send(gameRoom);
 		gameRoom++;
 });
