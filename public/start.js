@@ -9,7 +9,7 @@ function askServer() {
 }
 
 //get room number
-window.onload = function getRoom() {
+window.onload = function getData() {
 
 	$.get( "/host", function( data ) {
 	document.getElementById("RoomNum").innerHTML = data;
@@ -18,7 +18,7 @@ window.onload = function getRoom() {
 	
 	var dataLength = 0;
 	while (dataLength === 0) {
-		dataLength = setTimeout('askServer', 1000);
+		dataLength = setTimeout(askServer, 1000);
 	}
 	window.location.href = url + "/host.html";
 };
