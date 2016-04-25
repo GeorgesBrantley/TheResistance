@@ -27,6 +27,5 @@ function voteFail() {
 	$.get( address, function() {
 	});
 
-
 }
 	
