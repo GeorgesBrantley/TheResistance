@@ -9,6 +9,7 @@ window.onload = function getRoom() {
 	console.log("GameNum Before: " + sessionStorage.getItem('gameNum'));
 	
 	if (sessionStorage.getItem('gameNum') === null) {
+		console.log("was null\n");
 		$.get("/host", function(data) {
 			console.log("Data: " + data + "\n");
 			var room = parseInt(data.substring(1), 10);
@@ -22,6 +23,7 @@ window.onload = function getRoom() {
 			roomNumThing.innerHTML = roomNumThing.innerHTML + sessionStorage.gameNum;
 		});
 	} else {
+		console.log("was not null\n");
 		var roomNumThing = document.getElementById('RoomNumHeader');
 		roomNumThing.innerHTML = "Game: ";
 		console.log(sessionStorage.gameNum);
