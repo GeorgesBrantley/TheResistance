@@ -409,7 +409,7 @@ app.post('/:id/vote', function (req, res) {
 			//if failed
 			games[roomId].voteFails++;
 			if (games[roomId].voteFails >= 5) {
-				res.send("SPIES WIN GAME\n");
+				res.send("SPIES WIN GAME");
 			} else {
 						//CLEARS!
 				games[roomId].Mission = [];
@@ -417,13 +417,13 @@ app.post('/:id/vote', function (req, res) {
 				games[roomId].voteFails++;
 				for (var x = 0; x < games[roomId].Players.length ;x++)
 					games[roomId].Players[x].mission = 0;
-				res.send('Vote Fails!\n');
+				res.send('Vote Fails!');
 			}
 			//NEED new team leader
 		} else {
 			//if passes
 			games[roomId].voteFails = 0;
-			res.send('Vote Passes!\n');
+			res.send('Vote Passes!');
 			//Go to mission?
 		}
 });
