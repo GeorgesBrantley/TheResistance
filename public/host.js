@@ -15,11 +15,11 @@ window.onload = function getRoom() {
 	
 	$.get("/" + roomNum + "/getLeaderList", function( data ){
 		
-		var round1 = document.getElementById(round1);
-		var round2 = document.getElementById(round2);
-		var round3 = document.getElementById(round3);
-		var round4 = document.getElementById(round4);
-		var round5 = document.getElementById(round5);
+		//var round1 = document.getElementById(round1Cir);
+		//var round2 = document.getElementById(round2Cir);
+		//var round3 = document.getElementById(round3Cir);
+		//var round4 = document.getElementById(round4Cir);
+		//var round5 = document.getElementById(round5Cir);
 	});
 };
 

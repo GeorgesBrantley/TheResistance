@@ -104,7 +104,7 @@ pre {
 	transform: translate(-50%, 0);
 }
 
-.centeredInParent {
+.centeronImage {
 	position: absolute;
 	top:-75px;
 }
