@@ -16,7 +16,7 @@ window.onload = function getRoom() {
 	$.get("/host", function(data) {	
 		var roomNumThing = document.getElementById('RoomNumHeader');
 		roomNumThing.innerHTML = "Game: " + data;
-		sessionStorage.roomNum = data;
+		sessionStorage.gameNum = data;
 	});
 
 	
