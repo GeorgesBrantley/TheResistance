@@ -9,11 +9,6 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 					[3, 4, 4, 5, 5]];
 
 var roundCircles = [];
-	roundCircles.push(document.getElementById('round1Cir'));
-	roundCircles.push(document.getElementById('round2Cir'));
-	roundCircles.push(document.getElementById('round3Cir'));
-	roundCircles.push(document.getElementById('round4Cir'));
-	roundCircles.push(document.getElementById('round5Cir'));
 
 var currentRoundInfo;
 var currentRound = 0, currSpyWins = 0, currResWins = 0;
@@ -54,6 +49,12 @@ window.onload = function getRoom() {
 	for(i = 0; i < numberTexts.length; i++) {
 		numberTexts[i].innerHTML = roundNumbers[numPlayers-5][i];
 	}
+	
+	roundCircles.push(document.getElementById('round1Cir'));
+	roundCircles.push(document.getElementById('round2Cir'));
+	roundCircles.push(document.getElementById('round3Cir'));
+	roundCircles.push(document.getElementById('round4Cir'));
+	roundCircles.push(document.getElementById('round5Cir'));
 	
 	pull();
 };
