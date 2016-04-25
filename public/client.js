@@ -34,20 +34,19 @@ function getList() {
 	xhr.onreadystatechange = processRequest;
 	function processRequest(data) {
 		if(xhr.readyState === 4 && xhr.status === 200) {
-			console.log("xhr.responseText: " + xhr.responseText);
-			var response = JSON.parse(xhr.responseText);
-			console.log("response: " + response); 
 			players = JSON.parse(xhr.response);
 			console.log(players[0].name);
+			buildTable();
 		}
-
 	}
+}
 
-	var table = document.createElement("table");
+function buildTable() {
+	var table = document.createElement('table');
 	console.log("Size of players: " + players.length);
 	for(var x = 0; x < players.length; x++) {
-		  var tr = document.createElement("tr"); 
-  		  var td = document.createElement("td");
+		  var tr = document.createElement('tr'); 
+  		  var td = document.createElement('td');
    		  var text = document.createTextNode(players[x].name);
 
 		  td.appendChild(text);
@@ -55,7 +54,6 @@ function getList() {
 		  table.appendChild(tr);
 	}
 	document.body.appendChild(table);
-	
 }
 
 /*
