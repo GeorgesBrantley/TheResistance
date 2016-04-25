@@ -59,22 +59,15 @@ function buildTable() {
 		  tr.appendChild(td);
 		  table.appendChild(tr);
 	}
-	 var ftr = document.createElement('tr'); 
-  	 var ftd = document.createElement('td');
-  	 var otd = document.createElement('td');
-  	 var obutton = document.createElement('input');
+	var ftr = document.createElement('tr'); 
+  	var ftd = document.createElement('td');
   	var fbutton = document.createElement('input');
-  	 fbutton.value="Vote on mission";
-  	 fbutton.type="button";
-  	 fbutton.innerHTML="Vote on mission";
-  	 obutton.type="button";
-  	 obutton.innerHTML="Update Screen";
-  	 obutton.onclick=checkboxes();
+  	fbutton.value="Vote on mission";
+  	fbutton.type="button";
+  	fbutton.innerHTML="Vote on mission";
   	fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
   	ftd.appendChild(fbutton);
-  	otd.appendChild(obutton);
   	ftr.appendChild(ftd);
-  	ftr.appendChild(otd);
 	table.appendChild(ftr);
 	
 	table.style.border="2px solid white";
@@ -83,7 +76,7 @@ function buildTable() {
 	document.body.appendChild(table);
 }
 
-function checkboxes() {
+function check() {
 	for(var x = 0; x < checkboxes.length; x++) {
 		if(checkboxes[x].checked) {
 			select(x);
