@@ -50,11 +50,14 @@ window.onload = function getRoom() {
 		numberTexts[i].innerHTML = roundNumbers[numPlayers-5][i];
 	}
 	
-	roundCircles.push(document.getElementById('round1Cir'));
-	roundCircles.push(document.getElementById('round2Cir'));
-	roundCircles.push(document.getElementById('round3Cir'));
-	roundCircles.push(document.getElementById('round4Cir'));
-	roundCircles.push(document.getElementById('round5Cir'));
+	$(document).ready(function() {
+		roundCircles.push(document.getElementById('round1Cir'));
+		roundCircles.push(document.getElementById('round2Cir'));
+		roundCircles.push(document.getElementById('round3Cir'));
+		roundCircles.push(document.getElementById('round4Cir'));
+		roundCircles.push(document.getElementById('round5Cir'));
+	});
+
 	
 	pull();
 };
@@ -84,6 +87,8 @@ function pull() {
 					+ "\nspyWins= " + spyWins
 					+ "\nresWins= " + resWins + "\n");
 		if (thisRound > currentRound) {
+			console.log("in if statement\n");
+			console.log("Current round: " + currentRound);
 			if (spyWins > currSpyWins) {
 				roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
 				currSpyWins = spyWins;
