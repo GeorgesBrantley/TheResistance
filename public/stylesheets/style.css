@@ -106,7 +106,7 @@ pre {
 
 .centeredInParent {
 	position: absolute;
-	margin: auto;
+	margin-top:-75px;
 }
 
 
