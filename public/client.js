@@ -1,7 +1,6 @@
 /*eslint-env browser, jquery*/
 var roomNum = sessionStorage.getItem("roomNum");
 var players;
-var numSelected = 0;
 var checkboxes = [];
 
 console.log(roomNum);
@@ -72,7 +71,8 @@ function buildTable() {
 	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
-	document.body.appendChild(table);
+	document.getElementById("t").appendChild(table);
+	//document.body.appendChild(table);
 }
 
 function check() {
