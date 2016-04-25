@@ -2,6 +2,7 @@
 var roomNum = sessionStorage.getItem("roomNum");
 var players;
 var numSelected = 0;
+var checkboxes = [];
 
 console.log(roomNum);
 function getList() {
@@ -31,6 +32,12 @@ function getList() {
 			buildTable();
 		}
 	}
+	
+	for(var x = 0; x < checkboxes.length; x++) {
+		checkboxes[x].onclick = function() {
+			select(x);
+		};
+	}
 }
 
 function buildTable() {
@@ -45,9 +52,10 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = x;
-		  checkBox.onclick = function() {
+/*		  checkBox.onclick = function() {
 		  	select(x);
 		  };
+*/		  checkboxes.push(checkBox);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
@@ -63,7 +71,7 @@ function buildTable() {
   	 fbutton.value="Vote on mission";
   	 fbutton.type="button";
   	 fbutton.innerHTML="Vote on mission";
-  	//fbutton.setAttribute("onclick", function() { alert("blabla"); });
+  		fbutton.setAttribute("onclick", function() { window.location.href="vote.html"; });
   	 ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
