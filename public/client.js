@@ -7,7 +7,6 @@ function getList() {
 	//denote current leader
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("GET", "/" + roomNum + "/getLeader");
-	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xmlhttp.send(null);
 	console.log("/getLeader: " + xmlhttp.responseText);
 	leader = xmlhttp.responseText.name;
@@ -17,7 +16,6 @@ function getList() {
 	//create selectable list
 	xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("GET", "/" + roomNum + "/getPlayers");
-	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xmlhttp.send(null);
 	console.log("/getPlayers: " + xmlhttp.responseText);
 	var players = xmlhttp.responseText;
@@ -29,7 +27,5 @@ function getList() {
 		option.innerHTML = players[x].name;
 		
 		document.getElementById("playerList").appendChild(option);
-		
-		
 	}
 }
