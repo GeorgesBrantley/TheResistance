@@ -59,7 +59,8 @@ function buildTable() {
    		  
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
-		  checkBox.value = text;
+		  checkBox.value = x;
+		  checkBox.onclick=select(checkBox.value);
 		  td1.style.border= "1px solid white";
 		  td.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
@@ -74,7 +75,7 @@ function buildTable() {
   	 var fbutton = document.createElement('button');
   	 fbutton.value="Vote on mission";
   	 fbutton.innerHTML="Vote on mission";
-  	 fbutton.onclick="vote()";
+  	 fbutton.onclick=vote();
   	 ftd.appendChild(fbutton);
   	ftr.appendChild(ftd);
 	table.appendChild(ftr);
@@ -87,6 +88,20 @@ function buildTable() {
 
 function vote() {
 	window.location.href="vote.html";
+}
+function select(value) {
+	var selected = value.name;
+	//send update to server
+	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
+	xmlhttp.open("POST", "/" + roomNum + "/select");
+	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+	xmlhttp.send(JSON.stringify(selected));
+	console.log("Post response: " + xmlhttp.responseText);
+	
+	//test who is on the mission
+	$.get( "/" + roomNum + "/whoMission", function( data ) {
+		console.log("whoMission: " + data);
+	});
 }
 
 /*
