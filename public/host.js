@@ -39,9 +39,7 @@ window.onload = function getRoom() {
 		
 	for(i = 0; i < numberTexts.length; i++) {
 		numberTexts[i].innerHTML = roundNumbers[numPlayers-5][i];
-	};
-
-	});
+	}
 };
 
 
