@@ -26,6 +26,7 @@ window.onload = function getRoom() {
 		$.get("/host", function(data) {
 			var room = parseInt(data.substring(1), 10);
 			sessionStorage.gameNum = room;
+			console.log(sessionStorage.gameNum);
 		});
 	}
 
