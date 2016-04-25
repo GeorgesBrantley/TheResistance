@@ -265,11 +265,8 @@ app.get('/:id/getHost', function (req, res) {
 //GET PLAYERS
 app.get('/:id/getPlayers', function (req, res) {
 	var roomId = req.params.id;
-	try {
-		res.send(games[roomId].Players);
-	} catch (err) {
-		res.send(null);
-	}
+	res.send(games[roomId].Players);
+	//	res.send(null);
 });
 //GET SPIES
 app.get('/:id/getSpies', function (req, res) {
@@ -459,6 +456,7 @@ app.get('/:id/nextLeader', function(req, res) {
 });
 app.get('/:id/getLeader', function(req, res) {
 	var id = req.params.id;
+	console.log("Server-Leaders: " + games[id].Players[games[id].Leaders[0]]);
 	res.send(games[id].Players[games[id].Leaders[0]]);
 });
 

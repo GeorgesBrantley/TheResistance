@@ -1,6 +1,5 @@
 /*eslint-env browser, jquery*/
 
-//players array
 var roomNum = 0;
 var players = [];
 
@@ -20,10 +19,12 @@ function startGame() {
 			current.name = playerName;
 			current.side = 0;
 			current.mission = 0;
-			current.phone = playerNum;
+			if(playerNum === "") {
+				current.phone = 0;
+			} else {
+				current.phone = playerNum;
+			}
 			current.teamLeader = 0;
-			
-			console.log(current);
 			
 			//add current to array 
 			players.push(current);
@@ -32,6 +33,7 @@ function startGame() {
 
 	//get room number
 	roomNum = document.getElementById("roomNum").value;
+	sessionStorage.setItem("roomNum", roomNum);
 
 	//safety checks
 	if(roomNum < 0 || roomNum === "") {
@@ -41,29 +43,17 @@ function startGame() {
 	if(players.length < 5 || players.length > 10) {
 		return null;
 	}
-	
-	//json to be posted
-
-	//var json = {"room": roomNum, "playersList": players.toString()};
 
 	var json = {"room": roomNum, "playersList": players};
-	var test1 = json.room;
-	var test2 = json.playersList;
-	console.log('\nJOIN \nPLAYERS: ' + players+ '\nJson: '+ json + 
-	'\nObjectRoom: ' + test1 + '\nObjectList: ' +test2);
-
 	
 	//post data to server
-/*	$.post( "/join", {data: "hey"}, function(data) {
-		console.log(data);
-	});
-*/	
-	//new post
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("POST", "/join");
 	xmlhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 	xmlhttp.send(JSON.stringify(json));
 	console.log(xmlhttp.responseText);
-
+	
+	//switch pages
+	window.location.href = "client.html";
 }
 	
