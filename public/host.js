@@ -13,7 +13,8 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 //get room number
 window.onload = function getRoom() {
 	
-	var roomNumThing = document.getElementById(RoomNum);
+	sessionStorage.roomNum = $.get("/host");	
+	var roomNumThing = document.getElementById('RoomNumHeader');
 	roomNumThing.innerHTML = "Game: " + sessionStorage.roomNum;
 	
 	
