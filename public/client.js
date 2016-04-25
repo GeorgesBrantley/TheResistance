@@ -26,7 +26,14 @@ function getList() {
 	console.log("/getLeaderList: " + JSON.parse(xmlhttp2.responseText));
 	players = JSON.parse(xmlhttp2.responseText);
 */
-
+	
+	//show # players to select
+	$.get( "/" + roomNum + "/totalSelected", function( data ) {
+		var str = "Select " + data.charAt(2) + " players to go on the mission.";
+		document.getElementById("description").innerHTML = str;
+	});
+	
+	//build player table
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', "/" + roomNum + "/getLeaderList", true);
 	xhr.send();
@@ -47,16 +54,29 @@ function buildTable() {
 	for(var x = 0; x < players.length; x++) {
 		  var tr = document.createElement('tr'); 
   		  var td = document.createElement('td');
+  		  var td1 = document.createElement('td');
    		  var text = document.createTextNode(players[x].name);
    		  
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = text;
-		  td.appendChild(checkBox);
+		  td1.appendChild(checkBox);
 		  td.appendChild(text);
 		  tr.appendChild(td);
+		  tr.appendChild(td1);
 		  table.appendChild(tr);
 	}
+	 var ftr = document.createElement('tr'); 
+  	 var ftd = document.createElement('td');
+  	 var fbutton = document.createElement('button');
+  	 fbutton.value="Vote on mission";
+  	 fbutton.innerHTML="Vote on mission";
+  	 fbutton.onclick = window.location.href = "vote.html";
+  	 ftd.appendChild(fbutton);
+  	ftr.appendChild(ftd);
+	table.appendChild(ftr);
+	
+	table.style.border="2px solid white";
 	document.body.appendChild(table);
 }
 
