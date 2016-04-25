@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Resistance</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="stylesheets/style.css">
+    
+    <script language="javascript" type="text/javascript">	
+		/*eslint-env browser */
+		function switchpageFail() {
+    		window.location.href = "start.html";
+    		voteFail();
+    	}
+		function switchpagePass() {
+    		window.location.href = "join.html";
+    	}
+    </script>
+  </head>
+
+  <body>
+    <table>
+      <tr>
+            <h1>How did the Vote Go?</h1>
+            <div name="buttons">
+            	<button type="button" id="FAIL" onclick="switchpageFail()">Vote Failed</button>
+            	<button type="button" id="PASS" onclick="switchpagePass()">Vote Passed</button>
+            </div>
+       </tr>
+    </table>
+  </body>
+join.html
+</html>
