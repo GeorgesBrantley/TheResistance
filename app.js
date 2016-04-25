@@ -360,6 +360,7 @@ app.post('/:id/select', function (req, res) {
 		var json = req.body;
 		var name = json.name;
 		for (var x = 0; x < games[roomId].playersNum; ++x) {
+			console.log('TEST: ' +  games[roomId].Players[x].name + ' v ' + name);
 			if (name === games[roomId].Players[x].name) {
 					if (games[roomId].Players[x].mission === 0) {
 						//put on mission
