@@ -20,7 +20,7 @@ window.onload = function getData() {
 	while (dataLength === 0) {
 		dataLength = setTimeout(askServer, 1000);
 	}
-	window.location.href = url + "/host.html";
+	window.location.href = "/host.html";
 };
 
 
