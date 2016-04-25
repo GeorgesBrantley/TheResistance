@@ -32,14 +32,18 @@ function getList() {
 	});
 */
 
-	var table = document.getElementById("playerList");
+	var table = document.createElement('table');
 	console.log("Size of players: " + players.length);
 	for(var x = 0; x < players.length; x++) {
-		console.log("data[x].name = " + players[x].name);
-		var row = table.insertRow(x + 1);
-		var cell1 = row.insertCell(0);
-		cell1.innerHTML = players.name[x];
+		  var tr = document.createElement('tr'); 
+  		  var td = document.createElement('td');
+   		  var text = document.createTextNode(players.name[x]);
+
+		  td.appendChild(text);
+		  tr.appendChild(td);
+		  table.appendChild(tr);
 	}
+	document.body.appendChild(table);
 	
 }
 /*
