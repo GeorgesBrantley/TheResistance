@@ -38,6 +38,7 @@ window.onload = function getRoom() {
 function gotoHost() {
 	$.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
 		sessionStorage.numPlayers = data.length;
-		if (data.length > 0) window.location.href="host.html";
+		console.log(sessionStorage.numPlayers);
+		if (sessionStorage.numPlayers.length > 0) window.location.href="host.html";
 	});
 }
