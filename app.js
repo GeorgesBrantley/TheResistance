@@ -353,7 +353,6 @@ app.post('/:id/select', function (req, res) {
 		var roomId = req.params.id;
 		var json = req.body;
 		var name = json.name;
-		
 		for (var x = 0; x < games[roomId].playersNum; ++x) {
 			if (name === games[roomId].Players[x].name) {
 					if (games[roomId].Players[x].mission === 0) {
@@ -386,7 +385,7 @@ app.get('/:id/whoMission', function (req, res) {
 				++a;
 			}	
 		}
-		games[roomId].Mission = onMission;
+		games[roomId].Mission = onMission.slice(0);
 		res.send(JSON.stringify(onMission));
 });
 app.get('/:id/totalSelected', function(req, res) {
