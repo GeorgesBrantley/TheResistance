@@ -60,10 +60,11 @@ function buildTable() {
 		  var checkBox = document.createElement('input');
 		  checkBox.type = "checkbox";
 		  checkBox.value = text;
+		  td1.style.border= "1px solid white";
 		  td1.appendChild(checkBox);
 		  td.appendChild(text);
-		  tr.appendChild(td);
 		  tr.appendChild(td1);
+		  tr.appendChild(td);
 		  table.appendChild(tr);
 	}
 	 var ftr = document.createElement('tr'); 
@@ -76,6 +77,8 @@ function buildTable() {
 	table.appendChild(ftr);
 	
 	table.style.border="2px solid white";
+	table.style.paddingTop="10px";
+	table.style.textAlign="left";
 	document.body.appendChild(table);
 }
 
