@@ -71,8 +71,8 @@ function buildTable() {
 	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
-	document.getElementById("t").appendChild(table);
-	//document.body.appendChild(table);
+	//document.getElementById("t").appendChild(table);
+	document.body.appendChild(table);
 }
 
 function check() {
