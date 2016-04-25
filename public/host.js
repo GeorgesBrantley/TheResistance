@@ -13,7 +13,7 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 //get room number
 window.onload = function getRoom() {
 	
-	var roomNumThing = document.getElementById(roomNum);
+	var roomNumThing = document.getElementById(RoomNum);
 	roomNumThing.innerHTML = "Game: " + sessionStorage.roomNum;
 	
 	
@@ -32,6 +32,7 @@ window.onload = function getRoom() {
 	numberTexts.add(document.getElementById('round5Num'));		
 	
 	while (sessionStorage.numPlayer === null) {
+		console.log("in while loop");
 		continue;
 	}
 	
