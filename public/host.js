@@ -55,33 +55,22 @@ window.onload = function getRoom() {
 	for(i = 0; i < numberTexts.length; i++) {
 		numberTexts[i].innerHTML = roundNumbers[numPlayers-5][i];
 	}
+	
+	pull();
 };
 
-$.ajaxSetup ({
-	cache: false
-});
 
-var ajax_load = "<img src='images/load.gif alt='loading...' />";
-
-var loadUrl = "ajax/load.php";
-$('#roomNumThing').click(function() {
-	$('result').html(ajax_load).load(loadUrl);
-});
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//get initial game info
+function pull() {
+	var roomid = sessionStorage.gameNum;
+	 window.setInterval(function () {
+        // get from the server
+        
+     	$.get('/' + roomid + '/getHost', function(data) {
+			console.log(data);
+			}, false);
+		$.get('/' + roomid + '/getLeaderList', function(data) {
+			console.log(JSON.stringify(data));
+			}, false);
+    }, 5000); // repeat forever, polling every 3 seconds
+}
 
