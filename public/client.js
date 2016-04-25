@@ -1,6 +1,6 @@
 /*eslint-env browser, jquery*/
 var roomNum = sessionStorage.getItem("roomNum");
-var players = [];
+var players;
 
 console.log(roomNum);
 function getList() {
@@ -27,10 +27,18 @@ function getList() {
 	players = JSON.parse(xmlhttp2.responseText);
 */
 
-	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
-		players = data;
-	});
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', "http://ipinfo.io/json", true);
+	xhr.send();
+ 
+	xhr.onreadystatechange = processRequest;
+	function processRequest(data) {
+		if(xhr.readyState === 4) {
+			console.log("here");
+			players = data;
+		}
 
+	}
 
 	var table = document.createElement('table');
 	console.log("Size of players: " + players.length);
@@ -46,6 +54,7 @@ function getList() {
 	document.body.appendChild(table);
 	
 }
+
 /*
 function getPlayers() {
 	$.get( "/" + roomNum + "/getLeaderList", function( data ) {
