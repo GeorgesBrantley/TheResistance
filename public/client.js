@@ -3,6 +3,7 @@ var roomNum = sessionStorage.getItem("roomNum");
 var players;
 var maxPlayers;
 var checkboxes = [];
+var prevcheckboxes = [];
 
 console.log(roomNum);
 function getList() {
@@ -62,6 +63,8 @@ function buildTable() {
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
 	document.body.appendChild(table);
+	
+	prevcheckboxes = checkboxes;
 }
 
 function check() {
@@ -73,8 +76,13 @@ function check() {
 			if(num > maxPlayers) {
 				break;
 			}
+		} else if(!checkboxes[x].checked && prevcheckboxes[x].checked) {
+			select(x);
+			num--;
 		}
 	}
+	
+	prevcheckboxes = checkboxes;
 }
 
 function select(value) {
