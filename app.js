@@ -98,9 +98,9 @@ function Game(gamecode) {
 	this.voteFails = 0;
 }
 app.get('/host', function (req, res) {
-		res.send(gameRoom);
         var a = new Game(gameRoom);
 		games[gameRoom] = a;
+		res.send(gameRoom);
 		gameRoom++;
 });
 //Add players to game, after game has been made
