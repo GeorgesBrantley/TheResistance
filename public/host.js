@@ -12,13 +12,7 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 					[3, 4, 4, 5, 5]];
 
 //get room number
-window.onload = function getRoom() {
-
-	$.get( "/host", function( data ) {
-	document.getElementById("RoomNum").innerHTML = data;
-	roomNum = data;
-	});
-	
+window.onload = function getRoom() {	
 	
 	$.get("/" + roomNum + "/getLeaderList", function( data ){
 		

@@ -17,9 +17,11 @@ window.onload = function getData() {
 	});
 	
 	var dataLength = 0;
-	while (dataLength == 0) {
+	var trf = 0;
+	while (trf <10) {
 		console.log("dataLength=" + dataLength);
 		dataLength = setTimeout(askServer, 1000);
+		trf++;
 	}
 	window.location.href = "/host.html";
 };
