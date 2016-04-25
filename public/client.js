@@ -37,7 +37,7 @@ function getList() {
 	for(var x = 0; x < players.length; x++) {
 		  var tr = document.createElement('tr'); 
   		  var td = document.createElement('td');
-   		  var text = document.createTextNode(players.name[x]);
+   		  var text = document.createTextNode(players[x].name);
 
 		  td.appendChild(text);
 		  tr.appendChild(td);
