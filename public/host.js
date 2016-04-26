@@ -13,6 +13,8 @@ var roundCircles = [];
 var currentRoundInfo;
 var currentRound = 1, currSpyWins = 0, currResWins = 0;
 
+var players;
+
 /*function askServer() {
 	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
 		if (data.length === 0) {
@@ -107,18 +109,16 @@ function pull() {
 			window.location.href = "ResWin.html";
 		}
 		
-		var players;
-		
 		$.get('/' + roomid + '/getLeaderList', function(data) {
 			console.log(JSON.stringify(data));
 			players = data;
 			}, false);
 		
-		buildTable(players);
+		buildTable();
 	}, 5000); // repeat forever, polling every 3 seconds
 }
 
-function buildTable(players) {
+function buildTable() {
 	var table = document.createElement('table');
 	console.log("Size of players HOST: " + players.length);
 	for(var x = 0; x < players.length; x++) {
