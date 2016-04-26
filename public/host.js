@@ -142,7 +142,7 @@ function updateTable() {
   		var td = document.getElementById('playerCell' + x);
    		if (td.hasChildNodes() === false) {
    			var text = document.createTextNode(players[x].name);
-   		   	text.style.color= "black";
+   		   	td.style.color= "black";
    		   	td.appendChild(text);
    		}
    		if(players[x].teamLeader === 1) {
