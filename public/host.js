@@ -62,7 +62,6 @@ window.onload = function getRoom() {
 	pull();
 };
 
-
 function pull() {
 	var roomid = sessionStorage.gameNum;
 	 window.setInterval(function () {
@@ -72,10 +71,7 @@ function pull() {
 			console.log(data);
 			currentRoundInfo = data;
 			}, false);
-		$.get('/' + roomid + '/getLeaderList', function(data) {
-			console.log(JSON.stringify(data));
-			}, false);
-			
+		
 		var thisRoundLoc = currentRoundInfo.indexOf("Current Round: ") + 15;		
 		var spyWinsLoc = currentRoundInfo.indexOf("Spy Wins: ") + 10;
 		var resWinsLoc = currentRoundInfo.indexOf("Resistance Wins: ") + 17;
@@ -111,7 +107,45 @@ function pull() {
 			window.location.href = "ResWin.html";
 		}
 		
+		var players;
+		
+		$.get('/' + roomid + '/getLeaderList', function(data) {
+			console.log(JSON.stringify(data));
+			players = data;
+			}, false);
+		
+		buildTable(players);
 	}, 5000); // repeat forever, polling every 3 seconds
+}
+
+function buildTable(players) {
+	var table = document.createElement('table');
+	console.log("Size of players HOST: " + players.length);
+	for(var x = 0; x < players.length; x++) {
+	    var tr = document.createElement('tr'); 
+  		var td = document.createElement('td');
+   		var text = document.createTextNode(players[x].name);
+   		  
+   		if(players[x].teamLeader === 1) {
+   			td.style.backgroundColor = "green";			
+   		} else if (players[x].mission === 1) {
+   			td.style.backgroundColor = "yellow";
+   		} else {
+   			td.style.backgroundColor = "white";
+   		}
+   		  
+		td.style.border= "1px solid white";
+        td.appendChild(text);
+		td.style.textAlign="left";
+		tr.appendChild(td);
+		table.appendChild(tr);
+	}
+
+	table.style.border="2px solid white";
+	table.style.paddingTop="10px";
+	table.style.textAlign="left";
+	document.getElementById('playerListRow').appendChild(table);
+	
 }
 
 
