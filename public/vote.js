@@ -25,10 +25,13 @@ function voteFail() {
 	
 	//move team leader
 	address = '/' +id + '/nextLeader';
-	$.get( address, function(data) {
+/*	$.get( address, function(data) {
 		console.log(data);
 	});
-	
+*/
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', address, true);
+	xhr.send();
 	
 	window.location.href = "client.html";
 }
