@@ -66,23 +66,12 @@ function buildTable() {
 
 	var table = document.createElement('table');
 	console.log("Size of players HOST: " + players.length);
-	for(var x = 0; x < players.length; x++) {
+	for(var x = 0; x < sessionStorage.numPlayers; x++) {
 	    var tr = document.createElement('tr'); 
   		var td = document.createElement('td');
-   		var text = document.createTextNode(players[x].name);
-   		  
-   		if(players[x].teamLeader === 1) {
-   			td.style.backgroundColor = "green";			
-   		} else if (players[x].mission === 1) {
-   			td.style.backgroundColor = "yellow";
-   		} else {
-   			td.style.backgroundColor = "white";
-   		}
    		
-   		text.style.color = "black";
-		td.style.border= "1px solid white";
-        td.appendChild(text);
-		td.style.textAlign="center";
+   		td.style.border= "1px solid white";
+        td.style.textAlign="center";
 		td.setAttribute('id', 'playerCell' + x);
 		tr.appendChild(td);
 		table.appendChild(tr);
@@ -151,6 +140,11 @@ function pull() {
 function updateTable() {
 	for(var x = 0; x < players.length; x++) {
   		var td = document.getElementById('playerCell' + x);
+   		if (td.hasChildNodes() === false) {
+   			var text = document.createTextNode(players[x].name);
+   		   	text.style.color= "black";
+   		   	td.appendChild(text);
+   		}
    		if(players[x].teamLeader === 1) {
    			td.style.backgroundColor = "green";			
    		} else if (players[x].mission === 1) {
