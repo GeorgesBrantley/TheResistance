@@ -16,7 +16,6 @@
 			if(player === null || player === "") 
 				player = -1;
 			player++;
-			player = 0;
     	/*	$.get( "/" + roomNum + "/whoMission", function( data ) {
 				var str = "Pass the phone to " + data[player].name;
 				document.getElementById("par").innerHTML = str;
@@ -29,7 +28,7 @@
 			xhr.onreadystatechange = processRequest;
 			function processRequest(data) {
 				if(xhr.readyState === 4 && xhr.status === 200) {
-					var str = "Pass the phone to " + xhr.response[player].name;
+					var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
 					document.getElementById("par").innerHTML = str;
 				}
 			}
