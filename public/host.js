@@ -60,7 +60,7 @@ window.onload = function getRoom() {
 		roundCircles.push(document.getElementById('round5Cir'));
 	});
 
-	
+	buildTable();
 	pull();
 };
 
@@ -114,7 +114,7 @@ function pull() {
 			players = data;
 			}, false);
 		
-		buildTable();
+		updateTable();
 	}, 5000); // repeat forever, polling every 3 seconds
 }
 
@@ -133,10 +133,12 @@ function buildTable() {
    		} else {
    			td.style.backgroundColor = "white";
    		}
-   		  
+   		
+   		text.style.color = "black";
 		td.style.border= "1px solid white";
         td.appendChild(text);
-		td.style.textAlign="left";
+		td.style.textAlign="center";
+		td.setAttribute('id', 'playerCell' + x);
 		tr.appendChild(td);
 		table.appendChild(tr);
 	}
@@ -144,8 +146,20 @@ function buildTable() {
 	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
-	document.getElementById('playerListRow').appendChild(table);
-	
+	document.getElementById('playerListRow').appendChild(table);	
+}
+
+function updateTable() {
+	for(var x = 0; x < players.length; x++) {
+  		var td = document.getElementById('playerCell' + x);
+   		if(players[x].teamLeader === 1) {
+   			td.style.backgroundColor = "green";			
+   		} else if (players[x].mission === 1) {
+   			td.style.backgroundColor = "yellow";
+   		} else {
+   			td.style.backgroundColor = "white";
+   		}
+	}
 }
 
 
