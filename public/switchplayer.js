@@ -13,25 +13,25 @@ function getNextPlayer() {
 	}
 		
 	player++;
-   /*	$.get( "/" + roomNum + "/whoMission", function( data ) {
+   	$.get( "/" + roomNum + "/whoMission", function( data ) {
 		var str = "Pass the phone to " + data[player].name;
 		document.getElementById("par").innerHTML = str;
 	});
-*/
+
 	//build player table
-	var xhr = new XMLHttpRequest();
+/*	var xhr = new XMLHttpRequest();
 	xhr.open('GET', "/" + roomNum + "/whoMission", true);
 	xhr.send();
 	xhr.onreadystatechange = processRequest;
 	function processRequest(data) {
-		if(xhr.readyState === 4 && xhr.status === 200) {
-			var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
-			document.getElementById("par").innerHTML = str;
-		}
+	if(xhr.readyState === 4 && xhr.status === 200) {
+		var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
+		document.getElementById("par").innerHTML = str;
 	}
+*/	
 	//update for next player
 	sessionStorage.setItem("currentNum", player);
-   }
+}
 
 
 function endMission() {

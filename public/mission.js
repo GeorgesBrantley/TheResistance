@@ -8,14 +8,14 @@ window.onload = function fillPage() {
 	
 	//get current player
 	var xhr = new XMLHttpRequest();
-			xhr.open('GET', "/" + roomNum + "/whoMission", true);
-			xhr.send();
-			xhr.onreadystatechange = processRequest;
-			function processRequest(data) {
-				if(xhr.readyState === 4 && xhr.status === 200) {
-					currentPlayer = JSON.parse(xhr.response)[player];
-				}
-			}
+	xhr.open('GET', "/" + roomNum + "/whoMission", true);
+	xhr.send();
+	xhr.onreadystatechange = processRequest;
+	function processRequest(data) {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			currentPlayer = JSON.parse(xhr.response)[player];
+		}
+	}
 			
 	//set up fail counter
 	failCount = sessionStorage.getItem("failCount");
@@ -30,7 +30,7 @@ window.onload = function fillPage() {
 	if(currentPlayer.side === 0) {
 		instructions.innerHTML = "You are resistance. Continue the mission.";
 		document.getElementById("fail").style.visibility="hidden";
-	} else {
+	} else if(currentPlayer.side === 1) {
 		instructions.innerHTML = "You are a spy. Do you want to sabatoge the mission?";
 	}
 };
