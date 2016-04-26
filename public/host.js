@@ -11,7 +11,7 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 var roundCircles = [];
 
 var currentRoundInfo;
-var currentRound = 0, currSpyWins = 0, currResWins = 0;
+var currentRound = 1, currSpyWins = 0, currResWins = 0;
 
 /*function askServer() {
 	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
@@ -90,18 +90,18 @@ function pull() {
 			console.log("in if statement\n");
 			console.log("Current round: " + currentRound);
 			if (spyWins > currSpyWins) {
-				roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
+				roundCircles[currentRound-1].setAttribute('src', 'images/blueCircle.png');
 				currSpyWins = spyWins;
 				var spyPara = document.getElementById('spyPara');
 				spyPara.innerHTML = "Spy Wins: " + currSpyWins + "/3";
-			} else if (resWins > currResWins) {
-				roundCircles[currentRound].setAttribute('src', 'images/redCircle.png');
+			} else {
+				roundCircles[currentRound-1].setAttribute('src', 'images/redCircle.png');
 				currResWins = resWins;
 				var resPara = document.getElementById('resPara');
 				resPara.innerHTML = "Resistance Wins: " + currResWins + "/3";
 			}
 			currentRound = thisRound;
-			roundCircles[currentRound].setAttribute('src', 'images/greenCircle.png');
+			roundCircles[currentRound-1].setAttribute('src', 'images/greenCircle.png');
 		}
 		
 		if (currSpyWins === 3) {
