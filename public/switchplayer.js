@@ -1,4 +1,38 @@
 /*eslint-env browser, jquery*/
+var roomNum = sessionStorage.getItem("roomNum");
+
+function getNextPlayer() {
+	var player = sessionStorage.getItem("currentNum");
+	//if mission has just started
+	if(player === null || player === "") 
+		player = -1;
+	//check to see if mission is over
+	var numPeopleOnMission = sessionStorage.getItem("maxPlayers");
+	if(player === numPeopleOnMission){
+		endMission();
+	}
+		
+	player++;
+   /*	$.get( "/" + roomNum + "/whoMission", function( data ) {
+		var str = "Pass the phone to " + data[player].name;
+		document.getElementById("par").innerHTML = str;
+	});
+*/
+	//build player table
+	var xhr = new XMLHttpRequest();
+	xhr.open('GET', "/" + roomNum + "/whoMission", true);
+	xhr.send();
+	xhr.onreadystatechange = processRequest;
+	function processRequest(data) {
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
+			document.getElementById("par").innerHTML = str;
+		}
+	}
+	//update for next player
+	sessionStorage.setItem("currentNum", player);
+   }
+
 
 function endMission() {
 	//mission is over
