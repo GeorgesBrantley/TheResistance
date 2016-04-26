@@ -15,15 +15,6 @@ var currentRound = 1, currSpyWins = 0, currResWins = 0;
 
 var players;
 
-/*function askServer() {
-	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
-		if (data.length === 0) {
-			return false;
-		} 
-		return true;
-	});
-}*/
-
 //get room number
 window.onload = function getRoom() {
 	
@@ -34,6 +25,12 @@ window.onload = function getRoom() {
 			console.log(sessionStorage.gameNum);
 		});
 	}
+	
+	$.get('/' + sessionStorage.gameNum + '/getLeaderList', function(data) {
+			console.log(JSON.stringify(data));
+			players = data;
+			console.log(JSON.stringify(players));
+	}, false);
 
 	var roomNumThing = document.getElementById('RoomNumHeader');
 	roomNumThing.innerHTML = "Game: ";
@@ -59,10 +56,32 @@ window.onload = function getRoom() {
 		roundCircles.push(document.getElementById('round4Cir'));
 		roundCircles.push(document.getElementById('round5Cir'));
 	});
-
 	
+	console.log("got to the build\n");
+	buildTable();
 	pull();
 };
+
+function buildTable() {
+
+	var table = document.createElement('table');
+	console.log("Size of players HOST: " + sessionStorage.numPlayers);
+	for(var x = 0; x < sessionStorage.numPlayers; x++) {
+	    var tr = document.createElement('tr'); 
+  		var td = document.createElement('td');
+   		
+   		td.style.border= "1px solid white";
+        td.style.textAlign="center";
+		td.setAttribute('id', 'playerCell' + x);
+		tr.appendChild(td);
+		table.appendChild(tr);
+	}
+
+	table.style.border="2px solid white";
+	table.style.paddingTop="10px";
+	table.style.textAlign="left";
+	document.getElementById('playerListRow').appendChild(table);
+}
 
 function pull() {
 	var roomid = sessionStorage.gameNum;
@@ -114,18 +133,18 @@ function pull() {
 			players = data;
 			}, false);
 		
-		buildTable();
+		updateTable();
 	}, 5000); // repeat forever, polling every 3 seconds
 }
 
-function buildTable() {
-	var table = document.createElement('table');
-	console.log("Size of players HOST: " + players.length);
+function updateTable() {
 	for(var x = 0; x < players.length; x++) {
-	    var tr = document.createElement('tr'); 
-  		var td = document.createElement('td');
-   		var text = document.createTextNode(players[x].name);
-   		  
+  		var td = document.getElementById('playerCell' + x);
+   		if (td.hasChildNodes() === false) {
+   			var text = document.createTextNode(players[x].name);
+   		   	td.style.color= "black";
+   		   	td.appendChild(text);
+   		}
    		if(players[x].teamLeader === 1) {
    			td.style.backgroundColor = "green";			
    		} else if (players[x].mission === 1) {
@@ -133,19 +152,7 @@ function buildTable() {
    		} else {
    			td.style.backgroundColor = "white";
    		}
-   		  
-		td.style.border= "1px solid white";
-        td.appendChild(text);
-		td.style.textAlign="left";
-		tr.appendChild(td);
-		table.appendChild(tr);
 	}
-
-	table.style.border="2px solid white";
-	table.style.paddingTop="10px";
-	table.style.textAlign="left";
-	document.getElementById('playerListRow').appendChild(table);
-	
 }
 
 
