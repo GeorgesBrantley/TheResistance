@@ -65,7 +65,7 @@ window.onload = function getRoom() {
 function buildTable() {
 
 	var table = document.createElement('table');
-	console.log("Size of players HOST: " + players.length);
+	console.log("Size of players HOST: " + sessionStorage.numPlayers);
 	for(var x = 0; x < sessionStorage.numPlayers; x++) {
 	    var tr = document.createElement('tr'); 
   		var td = document.createElement('td');
