@@ -397,13 +397,7 @@ app.get('/:id/whoMission', function (req, res) {
 		games[roomId].Mission = onMission.slice(0);
 		res.send(JSON.stringify(onMission));
 });
-//Clear who is on mission
-app.get('/:id/clearMission', function (req, res) {
-		var roomId = req.params.id;
-		var onMission = [];
-		games[roomId].Mission = [];
-		res.send(JSON.stringify(onMission));
-});
+
 app.get('/:id/totalSelected', function(req, res) {
 		var id = req.params.id;
 		if (id <= gameRoom) {

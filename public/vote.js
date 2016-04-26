@@ -8,7 +8,7 @@ function voteFail() {
 	console.log("Vote Failed");
 	var id = sessionStorage.getItem('roomNum');
 	var address = '/' +id + '/vote';
-	var json = {vote:"1"};
+	var json = {vote:0};
 	
 	var xmlhttp = new XMLHttpRequest();   // new HttpRequest instance 
 	xmlhttp.open("POST", address);
