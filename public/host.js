@@ -34,6 +34,11 @@ window.onload = function getRoom() {
 			console.log(sessionStorage.gameNum);
 		});
 	}
+	
+	$.get('/' + sessionStorage.gameNum + '/getLeaderList', function(data) {
+			console.log(JSON.stringify(data));
+			players = data;
+	}, false);
 
 	var roomNumThing = document.getElementById('RoomNumHeader');
 	roomNumThing.innerHTML = "Game: ";
@@ -65,10 +70,6 @@ window.onload = function getRoom() {
 };
 
 function buildTable() {
-	$.get('/' + sessionStorage.gameNum + '/getLeaderList', function(data) {
-			console.log(JSON.stringify(data));
-			players = data;
-	}, false);
 
 	var table = document.createElement('table');
 	console.log("Size of players HOST: " + players.length);
