@@ -5,16 +5,17 @@ function getNextPlayer() {
 	var player = sessionStorage.getItem("currentNum");
 	//if mission has just started
 	if(player === null || player === "") 
-		player = -1;
+		player = 0;
+	else {
+		player++;
+	}
 	//check to see if mission is over
-	var numPeopleOnMission = sessionStorage.getItem("maxPlayers");
+	var numPeopleOnMission = sessionStorage.getItem("maxPlayers") - 1;
 	console.log("maxtimes: " + numPeopleOnMission);
 	console.log("Player: " + player);
-	if(player === numPeopleOnMission - 1){
+	if(player === numPeopleOnMission){
 		endMission();
 	}
-		
-	player++;
 /*   	$.get( "/" + roomNum + "/whoMission", function( data ) {
 		var str = "Pass the phone to " + data[player].name;
 		document.getElementById("par").innerHTML = str;
