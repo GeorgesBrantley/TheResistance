@@ -13,13 +13,13 @@ function getNextPlayer() {
 	}
 		
 	player++;
-   	$.get( "/" + roomNum + "/whoMission", function( data ) {
+/*   	$.get( "/" + roomNum + "/whoMission", function( data ) {
 		var str = "Pass the phone to " + data[player].name;
 		document.getElementById("par").innerHTML = str;
 	});
-
+*/
 	//build player table
-/*	var xhr = new XMLHttpRequest();
+	var xhr = new XMLHttpRequest();
 	xhr.open('GET', "/" + roomNum + "/whoMission", true);
 	xhr.send();
 	xhr.onreadystatechange = processRequest;
@@ -28,7 +28,7 @@ function getNextPlayer() {
 		var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
 		document.getElementById("par").innerHTML = str;
 	}
-*/	
+	
 	//update for next player
 	sessionStorage.setItem("currentNum", player);
 }
@@ -42,8 +42,8 @@ function endMission() {
 	var xhr1 = new XMLHttpRequest();
 	xhr1.open('GET', "/" + roomNum + "/DoubleJ", true);
 	xhr1.send();
-	xhr1.onreadystatechange = processRequest;
-	function processRequest(data) {
+	xhr1.onreadystatechange = processRequest1;
+	function processRequest1(data) {
 		if(xhr1.readyState === 4 && xhr1.status === 200) {
 			reqFails = xhr1.responseText;
 		}
