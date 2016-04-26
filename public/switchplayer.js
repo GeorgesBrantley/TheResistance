@@ -8,6 +8,8 @@ function getNextPlayer() {
 		player = -1;
 	//check to see if mission is over
 	var numPeopleOnMission = sessionStorage.getItem("maxPlayers");
+	console.log("maxtimes: " + numPeopleOnMission);
+	console.log("Player: " + player);
 	if(player === numPeopleOnMission){
 		endMission();
 	}
