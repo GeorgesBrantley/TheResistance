@@ -15,15 +15,6 @@ var currentRound = 1, currSpyWins = 0, currResWins = 0;
 
 var players;
 
-/*function askServer() {
-	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
-		if (data.length === 0) {
-			return false;
-		} 
-		return true;
-	});
-}*/
-
 //get room number
 window.onload = function getRoom() {
 	
@@ -38,6 +29,7 @@ window.onload = function getRoom() {
 	$.get('/' + sessionStorage.gameNum + '/getLeaderList', function(data) {
 			console.log(JSON.stringify(data));
 			players = data;
+			console.log(JSON.stringify(players));
 	}, false);
 
 	var roomNumThing = document.getElementById('RoomNumHeader');
@@ -65,10 +57,7 @@ window.onload = function getRoom() {
 		roundCircles.push(document.getElementById('round5Cir'));
 	});
 	
-	while(players === null) {
-		continue;
-	}
-	
+	console.log("got to the build\n");
 	buildTable();
 	pull();
 };
