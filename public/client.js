@@ -17,10 +17,9 @@ function getList() {
 	$.get( "/" + roomNum + "/totalSelected", function( data ) {
 		var str = "Select " + data.charAt(2) + " players to go on the mission.";
 		maxPlayers = data.charAt(2);
+		sessionStorage.setItem("maxPlayers", maxPlayers);
 		document.getElementById("description").innerHTML = str;
 	});
-	
-	sessionStorage.setItem("maxPlayers", maxPlayers);
 	
 	//build player table
 	var xhr = new XMLHttpRequest();
