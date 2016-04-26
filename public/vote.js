@@ -25,7 +25,8 @@ function voteFail() {
 	
 	//move team leader
 	address = '/' +id + '/nextLeader';
-	$.get( address, function() {
+	$.get( address, function(data) {
+		console.log(data);
 	});
 	
 	
