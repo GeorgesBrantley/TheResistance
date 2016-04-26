@@ -65,6 +65,10 @@ window.onload = function getRoom() {
 		roundCircles.push(document.getElementById('round5Cir'));
 	});
 	
+	while(players === null) {
+		continue;
+	}
+	
 	buildTable();
 	pull();
 };
