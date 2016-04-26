@@ -10,7 +10,7 @@ function getNextPlayer() {
 	var numPeopleOnMission = sessionStorage.getItem("maxPlayers");
 	console.log("maxtimes: " + numPeopleOnMission);
 	console.log("Player: " + player);
-	if(player === (numPeopleOnMission - 1)){
+	if(player === numPeopleOnMission - 1){
 		endMission();
 	}
 		
@@ -53,7 +53,7 @@ function endMission() {
 	}
 	
 	//check if spies win round
-	if((reqFails === 1 && fails >= 2) || (reqFails === 0 && fails >= 1)) {
+	if(reqFails === 1 && fails >= 2 || reqFails === 0 && fails >= 1) {
 		//mission is failed, spies win round
 		var xhr2 = new XMLHttpRequest();
 		xhr2.open('GET', "/" + roomNum + "/spyWin", true);
