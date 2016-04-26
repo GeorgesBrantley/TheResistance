@@ -117,8 +117,9 @@ pre {
 
 #winScreen {
 	background-color: lightblue;
-	font-family: "Courier New", monospace;
+	font-family: "Arial", sans-serif;
 	font-size: 200%;
+	color: #000000;
 }
 
 
