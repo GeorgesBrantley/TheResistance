@@ -12,8 +12,10 @@ function getList() {
 		var str = "Current leader is " + data.name;
 		document.getElementById("leader").innerHTML = str;
 	});
-
 	
+	$.get( "/" + roomNum + "/clearMission", function( data ) {
+	});
+
 	//show # players to select
 	$.get( "/" + roomNum + "/totalSelected", function( data ) {
 		var str = "Select " + data.charAt(2) + " players to go on the mission.";
