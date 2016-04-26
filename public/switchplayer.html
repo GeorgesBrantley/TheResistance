@@ -12,10 +12,11 @@
 		/*eslint-env browser, jquery*/
 		function getNextPlayer() {
 			var roomNum = sessionStorage.getItem("roomNum");
-			var player = sessionStorage.getItem("playerNum");
-			if(player === null) 
+			var player = sessionStorage.getItem("currentNum");
+			if(player === null || player === "") 
 				player = -1;
 			player++;
+			player = 0;
     	/*	$.get( "/" + roomNum + "/whoMission", function( data ) {
 				var str = "Pass the phone to " + data[player].name;
 				document.getElementById("par").innerHTML = str;
@@ -33,7 +34,7 @@
 				}
 			}
 			//update for next player
-			sessionStorage.setItem("playerNum", player);
+			sessionStorage.setItem("currentNum", player);
     	}
     	function switchPageMission() {
     		window.location.href="mission.html";
