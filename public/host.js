@@ -80,6 +80,7 @@ function buildTable() {
 	table.style.border="2px solid white";
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
+	table.setAttribute('width', '200px');
 	document.getElementById('playerListRow').appendChild(table);
 }
 
@@ -134,7 +135,7 @@ function pull() {
 			}, false);
 		
 		updateTable();
-	}, 5000); // repeat forever, polling every 3 seconds
+	}, 1000); // repeat forever, polling every 3 seconds
 }
 
 function updateTable() {
