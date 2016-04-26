@@ -59,11 +59,16 @@ window.onload = function getRoom() {
 		roundCircles.push(document.getElementById('round4Cir'));
 		roundCircles.push(document.getElementById('round5Cir'));
 	});
+	
+	buildTable();
+	pull();
+};
 
+function buildTable() {
 	$.get('/' + sessionStorage.gameNum + '/getLeaderList', function(data) {
 			console.log(JSON.stringify(data));
 			players = data;
-			}, false);
+	}, false);
 
 	var table = document.createElement('table');
 	console.log("Size of players HOST: " + players.length);
@@ -93,9 +98,7 @@ window.onload = function getRoom() {
 	table.style.paddingTop="10px";
 	table.style.textAlign="left";
 	document.getElementById('playerListRow').appendChild(table);
-	
-	pull();
-};
+}
 
 function pull() {
 	var roomid = sessionStorage.gameNum;
