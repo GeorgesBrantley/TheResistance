@@ -24,11 +24,12 @@ function getNextPlayer() {
 	xhr.send();
 	xhr.onreadystatechange = processRequest;
 	function processRequest(data) {
-	if(xhr.readyState === 4 && xhr.status === 200) {
-		var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
-		document.getElementById("par").innerHTML = str;
+		if(xhr.readyState === 4 && xhr.status === 200) {
+			var str = "Pass the phone to " + JSON.parse(xhr.response)[player].name;
+			document.getElementById("par").innerHTML = str;
+		}
 	}
-	
+
 	//update for next player
 	sessionStorage.setItem("currentNum", player);
 }
