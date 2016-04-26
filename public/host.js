@@ -11,7 +11,7 @@ var roundNumbers = [[2, 3, 2, 3, 3],
 var roundCircles = [];
 
 var currentRoundInfo;
-var currentRound = 1, currSpyWins = 0, currResWins = 0;
+var currentRound = 0, currSpyWins = 0, currResWins = 0;
 
 /*function askServer() {
 	return $.get("/" + sessionStorage.gameNum + "/getLeaderList", function(data) {
@@ -94,7 +94,7 @@ function pull() {
 				currSpyWins = spyWins;
 				var spyPara = document.getElementById('spyPara');
 				spyPara.innerHTML = "Spy Wins: " + currSpyWins + "/3";
-			} else {
+			} else if (resWins > currResWins) {
 				roundCircles[currentRound].setAttribute('src', 'images/redCircle.png');
 				currResWins = resWins;
 				var resPara = document.getElementById('resPara');
