@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="stylesheets/style.css">
-   <script src="vote.js"></script>
+   <script src="switchplayer.js"></script>
     <script language="javascript" type="text/javascript">	
 		/*eslint-env browser, jquery*/
 		function getNextPlayer() {
@@ -15,6 +15,12 @@
 			var player = sessionStorage.getItem("currentNum");
 			if(player === null || player === "") 
 				player = -1;
+			//check to see if mission is over
+			var numPeopleOnMission = sessionStorage.getItem("maxPlayers");
+			if(players === numPeopleOnMission){
+				endMission();
+			}
+				
 			player++;
     	/*	$.get( "/" + roomNum + "/whoMission", function( data ) {
 				var str = "Pass the phone to " + data[player].name;

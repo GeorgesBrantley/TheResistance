@@ -20,6 +20,8 @@ function getList() {
 		document.getElementById("description").innerHTML = str;
 	});
 	
+	sessionStorage.setItem("maxPlayers", maxPlayers);
+	
 	//build player table
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', "/" + roomNum + "/getLeaderList", true);
