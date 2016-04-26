@@ -10,7 +10,7 @@ function getNextPlayer() {
 	var numPeopleOnMission = sessionStorage.getItem("maxPlayers");
 	console.log("maxtimes: " + numPeopleOnMission);
 	console.log("Player: " + player);
-	if(player === numPeopleOnMission){
+	if(player === (numPeopleOnMission - 1)){
 		endMission();
 	}
 		
