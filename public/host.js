@@ -92,9 +92,13 @@ function pull() {
 			if (spyWins > currSpyWins) {
 				roundCircles[currentRound].setAttribute('src', 'images/blueCircle.png');
 				currSpyWins = spyWins;
+				var spyPara = document.getElementById('spyPara');
+				spyPara.innerHTML = "Spy Wins: " + currSpyWins + "/3";
 			} else {
 				roundCircles[currentRound].setAttribute('src', 'images/redCircle.png');
 				currResWins = resWins;
+				var resPara = document.getElementById('resPara');
+				resPara.innerHTML = "Resistance Wins: " + currResWins + "/3";
 			}
 			currentRound = thisRound;
 			roundCircles[currentRound].setAttribute('src', 'images/greenCircle.png');
