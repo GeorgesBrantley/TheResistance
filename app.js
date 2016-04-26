@@ -321,6 +321,7 @@ app.get('/:id/spyWin', function (req, res) {
 
 		var wins = games[roomId].spyWins;
 		if (wins >= 3) {
+			games[roomId].round++;
 			res.send('Spies WINS GAME\n');			
 		}
 		res.send('Spies Win Round ' + games[roomId].round + '\n');
@@ -339,6 +340,7 @@ app.get('/:id/resWin', function (req, res) {
 		games[roomId].resWins++;
 		var wins = games[roomId].resWins;
 		if (wins >= 3) {
+			games[roomId].round++;
 			res.send('Resistance WINS GAME\n')	;	
 		}
 		res.send('Resistance Win Round ' + games[roomId].round + '\n' );
