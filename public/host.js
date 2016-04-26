@@ -60,7 +60,40 @@ window.onload = function getRoom() {
 		roundCircles.push(document.getElementById('round5Cir'));
 	});
 
-	buildTable();
+	$.get('/' + sessionStorage.gameNum + '/getLeaderList', function(data) {
+			console.log(JSON.stringify(data));
+			players = data;
+			}, false);
+
+	var table = document.createElement('table');
+	console.log("Size of players HOST: " + players.length);
+	for(var x = 0; x < players.length; x++) {
+	    var tr = document.createElement('tr'); 
+  		var td = document.createElement('td');
+   		var text = document.createTextNode(players[x].name);
+   		  
+   		if(players[x].teamLeader === 1) {
+   			td.style.backgroundColor = "green";			
+   		} else if (players[x].mission === 1) {
+   			td.style.backgroundColor = "yellow";
+   		} else {
+   			td.style.backgroundColor = "white";
+   		}
+   		
+   		text.style.color = "black";
+		td.style.border= "1px solid white";
+        td.appendChild(text);
+		td.style.textAlign="center";
+		td.setAttribute('id', 'playerCell' + x);
+		tr.appendChild(td);
+		table.appendChild(tr);
+	}
+
+	table.style.border="2px solid white";
+	table.style.paddingTop="10px";
+	table.style.textAlign="left";
+	document.getElementById('playerListRow').appendChild(table);
+	
 	pull();
 };
 
@@ -116,37 +149,6 @@ function pull() {
 		
 		updateTable();
 	}, 5000); // repeat forever, polling every 3 seconds
-}
-
-function buildTable() {
-	var table = document.createElement('table');
-	console.log("Size of players HOST: " + players.length);
-	for(var x = 0; x < players.length; x++) {
-	    var tr = document.createElement('tr'); 
-  		var td = document.createElement('td');
-   		var text = document.createTextNode(players[x].name);
-   		  
-   		if(players[x].teamLeader === 1) {
-   			td.style.backgroundColor = "green";			
-   		} else if (players[x].mission === 1) {
-   			td.style.backgroundColor = "yellow";
-   		} else {
-   			td.style.backgroundColor = "white";
-   		}
-   		
-   		text.style.color = "black";
-		td.style.border= "1px solid white";
-        td.appendChild(text);
-		td.style.textAlign="center";
-		td.setAttribute('id', 'playerCell' + x);
-		tr.appendChild(td);
-		table.appendChild(tr);
-	}
-
-	table.style.border="2px solid white";
-	table.style.paddingTop="10px";
-	table.style.textAlign="left";
-	document.getElementById('playerListRow').appendChild(table);	
 }
 
 function updateTable() {
